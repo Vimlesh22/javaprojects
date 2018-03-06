@@ -1,6 +1,10 @@
 package com.bridgelabz.algorithms;
-import static com.bridgelabz.algorithms.Utility.toBinary;
-import static com.bridgelabz.algorithms.Utility.swapNibble;
+
+import static com.bridgelabz.utility.Utility.*;
+
+import com.bridgelabz.utility.Utility;
+
+
 
 
 public class SwapNibble {

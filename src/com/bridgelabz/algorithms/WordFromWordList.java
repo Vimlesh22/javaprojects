@@ -2,8 +2,9 @@ package com.bridgelabz.algorithms;
 
 
 
-import static com.bridgelabz.algorithms.Utility.binarySearchString;
-import static com.bridgelabz.algorithms.Utility.readFromFile;
+import static com.bridgelabz.utility.Utility.readFromFile;
+import static com.bridgelabz.utility.Utility.binarySearchString;
+import com.bridgelabz.utility.Utility;
 
 import java.io.FileNotFoundException;
 

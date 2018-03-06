@@ -1,5 +1,6 @@
 package com.bridgelabz.algorithms;
-import static com.bridgelabz.algorithms.Utility.squareRoot;
+import static com.bridgelabz.utility.Utility.squareRoot;
+import com.bridgelabz.utility.Utility;
 
 public class SquareRoot {
 

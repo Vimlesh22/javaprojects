@@ -1,7 +1,7 @@
 package com.bridgelabz.algorithms;
 
-import static com.bridgelabz.algorithms.Utility.bubbleSortInteger;
-
+import static com.bridgelabz.utility.Utility.*;
+import com.bridgelabz.utility.Utility;
 import java.util.Arrays;
 
 public class BubbleSort {

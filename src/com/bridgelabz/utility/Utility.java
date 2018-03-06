@@ -5,7 +5,7 @@
  *  @since   26-02-2018
  *
  **********************************************************/
-package com.bridgelabz.algorithms;
+package com.bridgelabz.utility;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,7 +17,7 @@ import java.util.Scanner;
 
 public class Utility {
 	Scanner sc;
-	static int mNote=0;
+	public static int mNote=0;
 	
 	 /**
 	  * Default Constructor to initialize Scanner Object.  

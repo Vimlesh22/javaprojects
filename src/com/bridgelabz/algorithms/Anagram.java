@@ -1,6 +1,7 @@
 package com.bridgelabz.algorithms;
-import static com.bridgelabz.algorithms.Utility.anagram;
 
+import static com.bridgelabz.utility.Utility.*;
+import com.bridgelabz.utility.Utility;
 public class Anagram {
 	
 

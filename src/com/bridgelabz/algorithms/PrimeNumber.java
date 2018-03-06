@@ -1,5 +1,6 @@
 package com.bridgelabz.algorithms;
-import static com.bridgelabz.algorithms.Utility.*;
+import static com.bridgelabz.utility.Utility.primeNumber;;
+
 public class PrimeNumber {
 
 	public static void main(String[] args) {

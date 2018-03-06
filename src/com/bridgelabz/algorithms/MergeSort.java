@@ -1,7 +1,7 @@
 package com.bridgelabz.algorithms;
 
-import java.util.Arrays;
-import static com.bridgelabz.algorithms.Utility.mergeSort;
+import static com.bridgelabz.utility.Utility.*;
+import com.bridgelabz.utility.Utility;
 
 public class MergeSort {
 

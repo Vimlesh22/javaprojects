@@ -1,5 +1,6 @@
 package com.bridgelabz.algorithms;
-import static com.bridgelabz.algorithms.Utility.*;
+import static com.bridgelabz.utility.Utility.*;
+import com.bridgelabz.utility.Utility;
 
 public class DayOfWeek {
 
