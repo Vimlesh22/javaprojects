@@ -12,7 +12,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.PrintWriter;
+
 import java.util.Scanner;
 
 public class Utility {
@@ -655,10 +656,24 @@ public class Utility {
 		return arr;
 	}
 	
-	public static String[] readFromFile(String filelocation) throws FileNotFoundException
+	public static void writeToFile(String str)
 	{
-		File file=new File(filelocation);
-		BufferedReader br=new BufferedReader(new FileReader(file));
+		File file=new File("/home/bridgeit/project/File/UnorderedList.txt");
+		try {
+			PrintWriter printWriter=new PrintWriter(file);
+			printWriter.write(str);
+			printWriter.close();
+		} 
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static String[] readFromFile(String filelocation) 
+	{
+		
 		
 		
 				int i;
@@ -666,11 +681,14 @@ public class Utility {
 				String[] stringsplit = null;
 				try 
 				{
+					File file=new File(filelocation);
+					BufferedReader br=new BufferedReader(new FileReader(file));
 					while ((i=br.read()) != -1)
 					{
 						str=str+(char)i;
 					}
 					stringsplit=str.split(" ");
+					br.close();
 					
 				}catch(IOException e)
 				{

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class TwoDArray {
 	public static<E> void display(E[][] array,int row,int col)
 	{
+		
 		for(int m=0;m<row;m++)
 		{
 			for(int n=0;n<col;n++)
@@ -14,6 +15,7 @@ public class TwoDArray {
 			}
 			System.out.println("");
 		}
+		
 	}
 	
 
