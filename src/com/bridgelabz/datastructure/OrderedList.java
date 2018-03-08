@@ -19,11 +19,13 @@ public class OrderedList {
 		{
 			list.addAtEnd(Integer.parseInt(str[i]));
 		}	
+		list.order();
 		list.printList();
 		System.out.println("");
 		System.out.println("Enter word :");
 		int number=utility.nextInt();
 		boolean check=list.search(number);
+	
 		if(check==true)
 		{
 			list.remove(number);
@@ -33,9 +35,10 @@ public class OrderedList {
 			list.addAtBegin(number);
 		}
 		String string=list.toString();
+		
 		writeToFile(string);
 		str=readFromFile("/home/bridgeit/project/File/UnorderedList.txt");
-		
+		list.order();
 		list.printList();
 	}
 

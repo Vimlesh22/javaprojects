@@ -32,6 +32,27 @@ public class LinkedList<T> {
 		return count;
 	}
 	
+	public void order()
+	{
+		Node<T> i;
+		Node<T> j;
+		T c=null;
+		for(i=head;i!=null;i=i.getNext())
+		{
+			for(j=i.getNext();j!=null;j=j.getNext())
+			{
+				int a=(int)i.getData();
+				int b=(int)j.getData();
+				if(a>b)
+				{
+					c=i.getData();
+					i.setData(j.getData());
+					j.setData(c);
+				}
+			}
+		}
+	}
+	
 	public boolean search(T value)
 	{
 		Node<T> temp=head;
@@ -138,7 +159,6 @@ public class LinkedList<T> {
 		{
 			Node<T> temp=null;
 			temp=head;
-			//System.out.print(head.getData()+"-->");
 			while(temp.getNext()!=null)
 			{
 				System.out.print(temp.getData()+" ");

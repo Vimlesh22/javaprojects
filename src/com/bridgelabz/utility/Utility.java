@@ -17,6 +17,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Utility {
+	static int NUM=0;
 	Scanner sc;
 	public static int mNote=0;
 	
@@ -670,6 +671,37 @@ public class Utility {
 		}
 		
 	}
+	public static boolean leapyear(String year)
+	{
+		
+				int yr=Integer.parseInt(year);
+				if(yr%4==0)
+				{
+					if(yr%100==0)
+					{
+						if(yr%400==0)
+						{
+							return true;
+						}
+						else
+						{
+							return false;
+						}
+					}
+					else
+					{
+						return true;
+					}
+					
+				}
+				else
+				{
+					return false;
+				}
+				
+			
+		
+	}
 	
 	public static String[] readFromFile(String filelocation) 
 	{
@@ -698,6 +730,90 @@ public class Utility {
 	}
 	 
 
+	public String[][] calendar(int mon,String yr)
+	{
+		String[][] calendar=new String[7][7];
+		String[] daychar={"Sun","Mon","Tue","Wed","Thr","Fri","Sat"};
+		int leapdays[]={31,29,31,30,31,30,31,31,30,31,30,31};
+		int days[]={31,28,31,30,31,30,31,31,30,31,30,31};
+		boolean y=leapyear(yr);
+		
+		if(y==true)
+		{
+			
+				int day=dayOfWeek(Integer.parseInt(yr),mon,1);
+				for(int i=0;i<7;i++)
+				{
+					if(i==0)
+					{
+						for(int k=0;k<7;k++)
+						{
+							calendar[i][k]=daychar[k];
+						}
+					}
+					if(i==1)
+					{
+						for(int p=day;p<7;p++)
+						{
+							calendar[i][p]=""+(++NUM);
+						}
+					}
+				}
+				for(int i=2;i<7;i++)
+				{
+					for(int j=0;j<7;j++)
+					{
+						if(NUM==leapdays[mon-1])
+						{
+							break;
+						}
+						else
+						{
+							calendar[i][j]=""+(++NUM);
+						}
+					}					
+				}		
+			}
+		
+		else
+		{
+			int day=dayOfWeek(Integer.parseInt(yr),mon,1);
+			for(int i=0;i<7;i++)
+			{
+				if(i==0)
+				{
+					for(int k=0;k<7;k++)
+					{
+						calendar[i][k]=daychar[k];
+					}
+				}
+				if(i==1)
+				{
+					for(int p=day;p<7;p++)
+					{
+						calendar[i][p]=""+(++NUM);
+					}
+				}
+			}
+			for(int i=2;i<7;i++)
+			{
+				for(int j=0;j<7;j++)
+				{
+					if(NUM==days[mon-1])
+					{
+						break;
+					}
+					else
+					{
+						calendar[i][j]=""+(++NUM);
+					}
+				}					
+			}
+		}
+		
+		
+		return calendar;
+		
+	}
 	
-
 }

@@ -1,52 +1,25 @@
 package com.bridgelabz.functionalprograms;
-
-import java.util.Scanner;
+import static com.bridgelabz.utility.Utility.leapyear;
+import com.bridgelabz.utility.Utility;
 
 public class LeapYear {
 	
-	public static void leapyear()
-	{
-		try(Scanner sc=new Scanner(System.in);)
-		{
-			System.out.println("Enter Year of which leap year is to be found out:");
-			String year=sc.next();
-			if(year.length()>3 && year.length()<=4)
-			{
-				int yr=Integer.parseInt(year);
-				if(yr%4==0)
-				{
-					if(yr%100==0)
-					{
-						if(yr%400==0)
-						{
-							System.out.println("The Year "+year+" is a Leap Year!!!");
-						}
-						else
-						{
-							System.out.println("The Year "+year+" is a Not Leap Year!!!");
-						}
-					}
-					else
-					{
-						System.out.println("The Year "+year+" is a Leap Year!!!");
-					}
-					
-				}
-				else
-				{
-					System.out.println("The Year "+year+" is a Not Leap Year!!!");
-				}
-				
-			}
-			else
-			{
-				System.out.println("year should be of 4 digits!!");
-			}
-		}
-	}
-
 	public static void main(String[] args) {
-		leapyear();
+		Utility utility=new Utility();
+		System.out.println("Enter Year:");
+		String year=utility.next();
+		if(year.length()!=4)
+		{
+			System.out.println("year should be of 4 digit");
+		}
+		else
+		{
+		boolean leap=leapyear(year);
+		if(leap==true)
+			System.out.println( "Leap Year");
+		else
+			System.out.println( "Not Leap Year");
+		}
 	}
 
 }
