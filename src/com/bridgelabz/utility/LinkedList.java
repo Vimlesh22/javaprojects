@@ -142,6 +142,16 @@ public class LinkedList<T> {
 		}
 	}
 	
+	public T getLastElement()
+	{
+		return tail.getData();
+	}
+	
+	public T getFirstElement()
+	{
+		return head.getData();
+	}
+	
 		
 	public void printList()
 	{
@@ -169,6 +179,7 @@ public class LinkedList<T> {
 		}
 		System.out.println("");
 	}
+	
 	
 	
 	

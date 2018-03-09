@@ -42,7 +42,7 @@ public class TwoDArray {
 					{
 					case 1:
 						
-						Integer array[][]=new Integer [row][col];
+						Integer array[][]=new Integer[row][col];
 						System.out.println("Enter elements in array:");
 						for(int i=0;i<row;i++)
 						{

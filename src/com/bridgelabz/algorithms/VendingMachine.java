@@ -1,6 +1,5 @@
 package com.bridgelabz.algorithms;
 import static com.bridgelabz.utility.Utility.calculateMinNoNote;
-import static com.bridgelabz.utility.Utility.*;
 import com.bridgelabz.utility.Utility;
 
 
@@ -20,7 +19,7 @@ public class VendingMachine{
 		else
 		{	
 		calculateMinNoNote(amount);
-		System.out.println("Minimum number notes required is:"+util.mNote);
+		System.out.println("Minimum number notes required is:"+Utility.mNote);
 		}
 	}
 

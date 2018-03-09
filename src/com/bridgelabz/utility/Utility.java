@@ -350,11 +350,12 @@ public class Utility {
 	 * purpose:Finds out prime number between range 1 to 1000.
 	 * 
 	 */
-	public static void primeNumber()
+	public static String primeNumber(int size)
 
 	{
-		for (int i = 1; i <= 1000; i++)         
-	       { 		  	  
+		String prime="";
+		for (int i = 1; i <= size; i++)         
+	      { 		  	  
 	          int counter=0; 	  
 	          for(int num =i; num>=1; num--)
 	          {
@@ -365,11 +366,12 @@ public class Utility {
 	          }
 	          if (counter ==2)
 	          {
-	        	  System.out.print(i+" ");
-		     
+	        	  //System.out.print(i+" ");
+	        	 prime+=i+" ";
 
 	          }	
 	       }
+		return prime;
 		
 		
 	}
@@ -815,5 +817,6 @@ public class Utility {
 		return calendar;
 		
 	}
+	
 	
 }

@@ -1,14 +1,14 @@
 package com.bridgelabz.utility;
 
-public class Stack {
+public class Stack<T> {
 
 	int top;
-	Object stack[];
+	LinkedList<T> stack;
 	int capacity;
 	
 	public Stack(int size)
 	{
-		stack=new Object[size];
+		stack=new LinkedList<T>();
 		top=0;
 		capacity=size;
 	}
@@ -31,11 +31,11 @@ public class Stack {
 		else
 			return false;
 	}
-	public void push(int ele)
+	public void push(T ele)
 	{
 		if(!isFull())
 		{					
-			stack[top]=ele;
+			stack.addAtEnd(ele);
 			top++;
 			
 		}
@@ -45,18 +45,20 @@ public class Stack {
 			
 		}
 	}
-	public Object pop()
+	public T pop()
 	{
 		if(!isEmpty())
 		{
-			Object x=stack[top];
+			T x=stack.getLastElement();
+			stack.remove(x);
 			top--;
 			return x;
 		}
 		else
 		{
-			System.out.println("Stack is Empty!! Can't pop!!");
-			return -1;
+			
+			//System.out.println("Stack is Empty!! Can't pop!!");
+			return null;
 		}
 		
 	}

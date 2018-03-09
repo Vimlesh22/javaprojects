@@ -1,18 +1,18 @@
 package com.bridgelabz.utility;
 
-public class Queue {
+public class Queue<T> {
 	
 	int front;
 	int rear;
 	int capacity;
-	Object queue[];
+	LinkedList<T> queue;
 	
 	public Queue(int size)
 	{
 		capacity=size;
 		front=-1;
 		rear=-1;
-		queue=new Object[size];
+		queue=new LinkedList<T>();
 	}
 	
 	public boolean isEmpty()
@@ -39,46 +39,30 @@ public class Queue {
 		return rear+1;
 	}
 	
-	public void enqueue(Object ele)
+	public void enqueue(T ele)
 	{
 		if(isFull())
 		{
 			System.out.println("Queue is Full!!!");
 		}
-		if(front==-1)
-		{
-			front=0;
-			rear=0;
-			queue[rear]=ele;
-		}
 		else
 		{
 			rear++;
-			queue[rear]=ele;
+			queue.addAtEnd(ele);
 		}
 	}
-	public Object dequeue()
+	public T dequeue()
 	{
 		if(isEmpty())
 		{
-			return "Queue is empty..cant remove!!!";
+			return null;
 			
 		}
 		else
 		{
-			if(rear==0)
-			{
-				rear--;
-			}
-			else
-			{
-			for(int i=front;i<=rear;i++)
-			{
-				queue[i]=queue[i+1];
-			}
-			rear--;
-			}
-			return "Successfully removed!!";
+			T ele=queue.getFirstElement();
+			queue.remove(ele);
+			return ele;
 		}
 	}
 	public void display()
@@ -89,10 +73,7 @@ public class Queue {
 		}
 		else
 		{
-			for(int i=0;i<=rear;i++)
-			{
-				System.out.println(queue[i]);
-			}
+			queue.printList();
 		}
 	}
 
