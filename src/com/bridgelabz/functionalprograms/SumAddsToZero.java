@@ -1,24 +1,23 @@
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
 
 public class SumAddsToZero {
 	static int count=0;
 	public static void sum()
 	{
-		try(Scanner sc=new Scanner(System.in);)
-		{
+			Utility utility=new Utility();
 			System.out.println("Enter how many elements you want:");
-			int num=sc.nextInt();
+			int num=utility.nextInt();
 			int arr[]=new int[num];
 			System.out.println("Enter elements:");
 			for(int i=0;i<num;i++)
 			{
-				arr[i]=sc.nextInt();
+				arr[i]=utility.nextInt();
 			}
 			sumzero(arr);
-			
-		}
+		
 	}
 	public static void sumzero(int array[])
 	{

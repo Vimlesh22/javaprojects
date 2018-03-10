@@ -1,14 +1,12 @@
 package com.bridgelabz.functionalprograms;
-
-import java.util.Scanner;
+import com.bridgelabz.utility.Utility;
 
 public class Power {
 	public static void power()
 	{
-		try(Scanner sc=new Scanner(System.in);)
-		{
+			Utility utility=new Utility();
 			System.out.println("Enter Number:");
-			int num=sc.nextInt();
+			int num=utility.nextInt();
 			
 	        if(num>=0 && num<31)
 	        {
@@ -25,7 +23,7 @@ public class Power {
 	        {
 	        	System.out.println("N should not be greater than 31");
 	        }
-		}
+	
 	}
 
 	public static void main(String[] args) {

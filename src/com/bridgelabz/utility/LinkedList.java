@@ -57,6 +57,7 @@ public class LinkedList<T> {
 	{
 		Node<T> temp=head;
 		int var=1;
+		//String value=search.toString();
 		while(!temp.getData().equals(value) && var<count)
 		{
 			temp=temp.getNext();
@@ -149,7 +150,12 @@ public class LinkedList<T> {
 	
 	public T getFirstElement()
 	{
+		if(head!=null)
+		{
 		return head.getData();
+		}
+		else 
+			return null;
 	}
 	
 		

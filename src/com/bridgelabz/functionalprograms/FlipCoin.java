@@ -1,6 +1,6 @@
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
+import com.bridgelabz.utility.Utility;
 
 public class FlipCoin {
 	
@@ -8,10 +8,9 @@ public class FlipCoin {
 	static float tail=0;
 	public  static void flip()
 	{
-		try(Scanner sc=new Scanner(System.in);)
-		{
+		Utility utility=new Utility();
 			System.out.println("Enter how many times coin should be flipped");
-			int flip=sc.nextInt();
+			int flip=utility.nextInt();
 			if(flip>0)
 			{
 				for(int i=1;i<=flip;i++)
@@ -36,7 +35,7 @@ public class FlipCoin {
 			}
 		}
 
-	}
+	
 	 
 	public static void main(String[] args) 
 	{

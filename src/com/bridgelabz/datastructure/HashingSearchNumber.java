@@ -1,57 +1,38 @@
 package com.bridgelabz.datastructure;
-
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import com.bridgelabz.utility.LinkedList;
 import com.bridgelabz.utility.Utility;
+import static com.bridgelabz.utility.Utility.readFromFile;
+import static com.bridgelabz.utility.Utility.writeToFile;
 
 public class HashingSearchNumber {
 
 	public static void main(String[] args) {
-		Utility utility=new Utility();
-		@SuppressWarnings("unchecked")
-		LinkedList<Integer> list[]=new LinkedList[11];
-		String str="/home/bridgeit/project/File/hashing.txt";
-		String[] number=utility.readFromFile(str);
-		Map<Integer,LinkedList<Integer>> slot=new HashMap<>();
-		//System.out.println(Arrays.toString(number));
-		int arr[]=new int[number.length-1];
-		int x=0;
-		for(int i=0;i<arr.length;i++)
-		{
-			arr[i]=Integer.parseInt(number[i]);
-		}
-		for(int i=0;i<11;i++)
-		{
-			
-			list[i]=new LinkedList<>();
-			
-		}
-		for(int j=0;j<arr.length;j++)
-		{
-			x=arr[j]%11;
-			list[x].addAtEnd(arr[j]);
-		}
-		for(int i=0;i<11;i++)
-		{
-			slot.put(i, list[i]);
-		}
-		for(Map.Entry<Integer,LinkedList<Integer>> mp:slot.entrySet())
-		{
-			System.out.println("Key: "+mp.getKey()+"    Value: "+mp.getValue());
-		}
 		
-		System.out.println("Enter Number to be searched");
-		Integer search=utility.nextInt();
-		for(Map.Entry<Integer,LinkedList<Integer>> mp:slot.entrySet())
+		String path="/home/bridgeit/project/File/hashing.txt";
+		String[] number=readFromFile(path);	
+		String retrieve1=Utility.hashing(number);	
+		String[] splitstring=retrieve1.split(" ");
+		int integerarray[]=new int[splitstring.length];
+		for(int i=0;i<splitstring.length;i++)
 		{
-			int num=search%11;
+			integerarray[i]=Integer.parseInt(splitstring[i]);
+		}
+		int[] retrieveintarray=Utility.bubbleSortInteger(integerarray);
+		String string="";
+		for(int i=0;i<retrieveintarray.length;i++)
+		{
+			string+=retrieveintarray[i]+" ";
+		}
+		System.out.println(string);
+		
+		//write updated list to file
+		writeToFile(path,string); 
+		//read updated list from file
+		String[] read=readFromFile("/home/bridgeit/project/File/hashing.txt");
+		for(int i=0;i<read.length;i++)
+		{
+			System.out.print(read[i]+" ");
 			
 		}
-		
 		
 		
 

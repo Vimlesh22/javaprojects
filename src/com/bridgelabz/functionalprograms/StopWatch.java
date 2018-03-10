@@ -1,23 +1,21 @@
 package com.bridgelabz.functionalprograms;
 
-
-import java.util.Scanner;
+import com.bridgelabz.utility.Utility;
 
 public class StopWatch {
 	static double timeelapse=0,second,second2;
 	public static void stopwatch()
 	{
 		
-		try(Scanner sc=new Scanner(System.in);)
-		{
+			Utility utility=new Utility();
 			System.out.println("Do you want to start the stopwatch?yes or no?");
-			String ask=sc.next();
+			String ask=utility.next();
 			if(ask.equals("yes") || ask.equals("y"))
 			{
 				System.out.println("Stop watch started....");
 				second = System.currentTimeMillis();
 				System.out.println("Do you want to stop the stopwatch?yes or no?");
-				String ask1=sc.next();
+				String ask1=utility.next();
 				if(ask1.equals("yes") || ask1.equals("y"))
 				{
 					System.out.println("Stop watch stopped....");
@@ -36,7 +34,7 @@ public class StopWatch {
 			}
 			System.out.println("Time elapsed :"+timeelapse+"millisecond");
 			
-		}
+		
 	}
 
 	public static void main(String[] args) {

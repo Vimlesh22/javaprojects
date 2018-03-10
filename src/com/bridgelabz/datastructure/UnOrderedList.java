@@ -13,8 +13,8 @@ public class UnOrderedList {
 		{
 		Utility utility=new Utility();
 		LinkedList<String> list=new LinkedList<String>();
-		
-			String str[] = readFromFile("/home/bridgeit/project/File/UnorderedList.txt");
+		String path="/home/bridgeit/project/File/UnorderedList.txt";
+			String str[] = readFromFile(path);
 			
 			for(int i=0;i<str.length;i++)
 			{
@@ -34,8 +34,8 @@ public class UnOrderedList {
 				list.addAtBegin(word);
 			}
 			String string=list.toString();
-			writeToFile(string);
-			str=readFromFile("/home/bridgeit/project/File/UnorderedList.txt");
+			writeToFile(path,string);
+			str=readFromFile(path);
 			for(int i=0;i<str.length;i++)
 			{
 				System.out.print(str[i]+" ");

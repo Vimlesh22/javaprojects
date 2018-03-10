@@ -1,14 +1,13 @@
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
+import com.bridgelabz.utility.Utility;
 
 public class PrimeFactor {
 	public static void primefactor()
 	{
-		try(Scanner sc=new Scanner(System.in);)
-		{
+			Utility utility=new Utility();
 			System.out.println("Enter Number to find the prime factors:");
-			int num=sc.nextInt();
+			int num=utility.nextInt();
 			while (num%2==0)
 	        {
 	            System.out.print(2 + " ");
@@ -26,7 +25,7 @@ public class PrimeFactor {
 	        {
 	            System.out.print(num);
 	        }
-		}
+		
 	}
 
 	public static void main(String[] args) {

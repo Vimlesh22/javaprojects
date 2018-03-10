@@ -1,6 +1,8 @@
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
+
+
+import com.bridgelabz.utility.Utility;
 
 public class HarmonicFunction {
 	
@@ -8,10 +10,9 @@ public class HarmonicFunction {
 	public static void harmonic()
 	{
 		
-		try(Scanner sc=new Scanner(System.in);)
-		{
+			Utility utility=new Utility();
 			System.out.println("Enter for how many no you want harmonic number:");
-			int num=sc.nextInt();
+			int num=utility.nextInt();
 			if(num!=0)
 			{
 				for(int i=1;i<=num;i++)
@@ -25,7 +26,6 @@ public class HarmonicFunction {
 			{
 				System.out.println("Number should be greater than 0!!");
 			}
-		}
 		
 	}
 

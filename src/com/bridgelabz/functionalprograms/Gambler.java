@@ -1,19 +1,19 @@
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
+
+import com.bridgelabz.utility.Utility;
 
 public class Gambler {
 	static int win=0,bet=0,lose=0;
 	public static void gambler()
 	{
-		try(Scanner sc=new Scanner(System.in);)
-		{
+			Utility utility=new Utility();
 			System.out.println("Enter Stake");
-			int cash=sc.nextInt();
+			int cash=utility.nextInt();
 			System.out.println("Enter Goal");
-			int goal=sc.nextInt();
+			int goal=utility.nextInt();
 			System.out.println("Enter Number of time to play");
-			int num=sc.nextInt();
+			int num=utility.nextInt();
 			int stake=cash;
 			for(int i=1;i<=num;i++)
 			{
@@ -45,7 +45,7 @@ public class Gambler {
 				stake=cash;
 			}
 		
-		}
+		
 		System.out.println("Win: "+win+"\nlose:"+lose);
 	}
 		

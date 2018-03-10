@@ -1,6 +1,6 @@
 package com.bridgelabz.datastructure;
 
-import java.util.Arrays;
+
 
 import com.bridgelabz.utility.Utility;
 
@@ -13,26 +13,31 @@ public class TwoDPrime {
 		int range=utility.nextInt();
 		String str=utility.primeNumber(range);
 		String[] prime=str.split(" ");
-	
+		int row=0;
+		int col=0;
 		String[] strrange={"0-100","100-200","200-300","300-400","400-500","500-600","600-700","700-800","800-900","900-1000"};
-		for(int row=0;row<1000;row++)
+		for(row=0;row<1000;row++)
 		{
 			if(row==0)
 			{
-				for(int col=0;col<10;col++)
+				for(col=0;col<10;col++)
 				{
 					System.out.print(twodarray[row][col]=strrange[col]+" ");
 				}
 				System.out.println("");
+				
 			}
+			
 		}
-		for(int row=1;row<1000;row++)
-		{
+		
+		for(row=1;row<1000;row++)
+		{		
 			
-			
-				
-				
-				int col=0;
+			for(col=0;col<10;col++)
+			{
+				if()
+			}
+				/*int col=0;
 				switch(row)
 					{
 						case 1:
@@ -59,10 +64,8 @@ public class TwoDPrime {
 							row++;
 							col++;
 							break;
-							
-					
-				
-			}
+						
+			}*/
 		}
 
 	}

@@ -13,8 +13,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Map.Entry;
 
 public class Utility {
 	static int NUM=0;
@@ -346,9 +348,11 @@ public class Utility {
 	}
 
 	
+	
 	/**
 	 * purpose:Finds out prime number between range 1 to 1000.
-	 * 
+	 * @param size size is no upto which you want prime number 
+	 * @return returns string of prime number
 	 */
 	public static String primeNumber(int size)
 
@@ -405,6 +409,9 @@ public class Utility {
 	    
 	}
 	
+	/**
+	 * @param str
+	 */
 	public static void swapNibble(String str)
 	{
 		//Swapping Nibble and printing decimal value
@@ -523,11 +530,11 @@ public class Utility {
 		{
 			for(int j=0;j<str.length-1;j++)
 			{
-				if(str[i].compareTo(str[j])<0)
+				if(str[j].compareTo(str[j])<0)
 				{
-					temp=str[i];
-					str[i]=str[j];
-					str[j]=temp;
+					temp=str[j];
+					str[j]=str[j+1];
+					str[j+1]=temp;
 				}
 			}
 		}
@@ -659,20 +666,7 @@ public class Utility {
 		return arr;
 	}
 	
-	public static void writeToFile(String str)
-	{
-		File file=new File("/home/bridgeit/project/File/UnorderedList.txt");
-		try {
-			PrintWriter printWriter=new PrintWriter(file);
-			printWriter.write(str);
-			printWriter.close();
-		} 
-		catch (FileNotFoundException e) {
-			
-			e.printStackTrace();
-		}
-		
-	}
+	
 	public static boolean leapyear(String year)
 	{
 		
@@ -704,6 +698,21 @@ public class Utility {
 			
 		
 	}
+	public static void writeToFile(String path,String str)
+	{
+		File file=new File(path);
+		try {
+			PrintWriter printWriter=new PrintWriter(file);
+			printWriter.write(str);
+			printWriter.close();
+		} 
+		catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
 	
 	public static String[] readFromFile(String filelocation) 
 	{
@@ -721,7 +730,9 @@ public class Utility {
 					{
 						str=str+(char)i;
 					}
+					
 					stringsplit=str.split(" ");
+					
 					br.close();
 					
 				}catch(IOException e)
@@ -816,6 +827,83 @@ public class Utility {
 		
 		return calendar;
 		
+	}
+	
+	public static String hashing(String[] number)
+	{
+		Utility utility=new Utility();
+		@SuppressWarnings("unchecked")
+		LinkedList<Integer> list[]=new LinkedList[11];
+		Map<Integer,LinkedList<Integer>> slot=new HashMap<>();
+		
+		int arr[]=new int[number.length-1];
+		int x=0,mod;
+		
+		//converts array of string in array of integer
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i]=Integer.parseInt(number[i]);
+		}
+		//creating linkedList object 
+		for(int i=0;i<11;i++)
+		{
+			
+			list[i]=new LinkedList<>();
+			
+		}
+		//adding elements into slots
+		for(int j=0;j<arr.length;j++)
+		{
+			x=arr[j]%11;
+			list[x].addAtEnd(arr[j]);
+			list[x].order();
+		}
+		//adding linkedlist into map
+		for(int i=0;i<11;i++)
+		{
+			slot.put(i, list[i]);
+		}
+		//Iterating through map to display elements
+		for(Map.Entry<Integer,LinkedList<Integer>> mp:slot.entrySet())
+		{
+			System.out.println("Key: "+mp.getKey()+"    Value: "+mp.getValue());
+		}
+		//searches the number in map
+		System.out.println("Enter Number to be searched");
+		Integer search=utility.nextInt();
+		mod=search%11;
+		//searches the number in map if found remove element else add to list
+		boolean result=false;
+		for(Entry<Integer, LinkedList<Integer>> sear:slot.entrySet())
+		{
+			
+			if(mod==sear.getKey() && sear.getValue().getFirstElement()!=null)
+			{
+				result=list[mod].search(search);
+			}
+			
+			
+		}
+		if(result == true)
+		{
+			System.out.println("Numer "+search+" found in list...and it has been deleted from list");
+			list[mod].remove(search);
+		}
+		else
+		{
+			System.out.println("Numer "+search+" Not found in list...and it has been added to list");
+			list[mod].addAtEnd(search);
+			list[mod].order();
+		}
+		//itrate through list in which element is present and store the updated list in string
+		String retrieve1="";
+		
+		for(Map.Entry<Integer,LinkedList<Integer>> mp:slot.entrySet())
+		{
+			System.out.println("Key: "+mp.getKey()+"    Value: "+mp.getValue());
+			retrieve1+=mp.getValue();
+		}
+		return retrieve1;
 	}
 	
 	

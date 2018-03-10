@@ -13,7 +13,8 @@ public class OrderedList {
 		
 		Utility utility=new Utility();
 		LinkedList<Integer> list=new LinkedList<Integer>();
-		String str[] = readFromFile("/home/bridgeit/project/File/OrderedList.txt");
+		String path="/home/bridgeit/project/File/OrderedList.txt";
+		String str[] = readFromFile(path);
 		
 		for(int i=0;i<str.length-1;i++)
 		{
@@ -36,8 +37,8 @@ public class OrderedList {
 		}
 		String string=list.toString();
 		
-		writeToFile(string);
-		str=readFromFile("/home/bridgeit/project/File/UnorderedList.txt");
+		writeToFile(path,string);
+		str=readFromFile(path);
 		list.order();
 		list.printList();
 	}
