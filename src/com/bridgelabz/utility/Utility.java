@@ -11,12 +11,23 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.Map.Entry;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 
 public class Utility {
 	static int NUM=0;
@@ -906,5 +917,235 @@ public class Utility {
 		return retrieve1;
 	}
 	
-	
+	public static void ricewheatpulse(String file)
+	{
+		FileReader filereader=null;
+		JSONParser parser=null;
+		JSONObject json=null;
+		try 
+		{
+			filereader=new FileReader(file);
+			parser=new JSONParser();
+			json=(JSONObject)parser.parse(filereader);
+			JSONObject rice=(JSONObject) json.get("Rice");
+			JSONObject pulse=(JSONObject) json.get("Pulses");
+			JSONObject wheat=(JSONObject) json.get("Wheat");
+			System.out.println(rice);
+			System.out.println(pulse);
+			System.out.println(wheat);
+			
+		} 
+		catch (ParseException | IOException e) 
+		{
+			
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try 
+			{
+				filereader.close();
+			} 
+			catch (IOException e) 
+			{
+			
+				e.printStackTrace();
+			}
+		}
+		
+
+	}
+	public static void inventorymanagement(String file)
+	{
+		FileReader fileReader=null;
+		JSONParser parser;
+		JSONObject rice,pulses,json,wheat;
+		FileWriter fileWriter=null;
+		long total=0; 
+		try{
+			fileReader=new FileReader(file);
+			parser=new JSONParser();
+			json=(JSONObject) parser.parse(fileReader);
+			rice=(JSONObject) json.get("Rice");
+			total=(Long)rice.get("Weight")*(Long)rice.get("Price");
+			rice.put("Total",total);
+			
+			pulses=(JSONObject) json.get("Pulses");
+			total=(Long)pulses.get("Weight")*(Long)pulses.get("Price");
+			pulses.put("Total",total);
+			
+			wheat=(JSONObject) json.get("Wheat");
+			total=(Long)pulses.get("Weight")*(Long)pulses.get("Price");
+			wheat.put("Total",total);
+			
+			json=new JSONObject();
+			json.put("Rice", rice);
+			json.put("Wheat", wheat);
+			json.put("Pulses", pulses);
+			
+			String writefile="/home/bridgeit/project/File/UpdatedInvertoryDetails.json";
+			fileWriter=new FileWriter(writefile);
+			
+			fileWriter.write(json.toJSONString());
+			System.out.println(json.toJSONString());
+			
+
+			
+			}
+		catch(IOException | ParseException e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try 
+			{
+				fileReader.close();
+				fileWriter.close();
+			} 
+			catch (IOException e)
+			{
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	public static void stockReport()
+	{
+		 int shares=0,price=0,total=0;
+		 JSONObject json=null;
+		 int totalvalue=0;
+		
+		 FileWriter fileWriter=null;
+		 String file;
+		Utility utility=new Utility();
+		System.out.println("Enter No of stocks");
+		int size=utility.nextInt();
+		JSONArray jsonArray=new JSONArray();;
+		JSONObject stockReport=null;
+		
+		for(int i=0;i<size;i++)
+		{
+			System.out.println("Enter Stock Name:");
+			String name=utility.next();
+			System.out.println("Enter Number of shares");
+			shares=utility.nextInt();
+			System.out.println("Enter Price of shares");
+			price=utility.nextInt();
+			total=shares*price;
+			
+			json=new JSONObject();
+			json.put("Name", name);
+			json.put("Shares", shares);
+			json.put("Price",price);
+			json.put("Total", total);
+			totalvalue+=total;
+			jsonArray.add(json);
+			
+			
+			
+		}
+		
+		/*int arr[]=new int[jsonArray.size()];
+		for(int i=0;i<jsonArray.size();i++)
+		{
+			JSONObject obj=(JSONObject)jsonArray.get(i);
+			arr[i]=(int) obj.get("Total");
+		}
+		int total1=0;
+		for(int i=0;i<arr.length;i++)
+		{
+			total1+=arr[i];
+		}*/
+			
+		
+		
+		stockReport=new JSONObject();
+		stockReport.put("StockReport", jsonArray);
+		stockReport.put("Total Share Value", totalvalue);
+		file="/home/bridgeit/project/File/Stockreport.json";
+		try 
+		{
+			fileWriter=new FileWriter(file);
+			fileWriter.write(stockReport.toJSONString());
+			System.out.println(stockReport.toJSONString());
+		} 
+		catch (IOException e) 
+		{
+						e.printStackTrace();
+		}
+
+	}
+	public static void regularexpression(String input)
+	{
+		Utility utility=new Utility();
+		String namevalidate="^[a-zA-Z ]+$";
+		String contactvalidate="[0-9]{10}+$";
+		String firstName="";
+		String lastName="";
+		String contact="";
+		Pattern pattern=Pattern.compile(namevalidate);
+		Matcher matcher=null;
+		
+		do
+		{
+			System.out.println("Enter First Name: ");
+			firstName=utility.next();
+			matcher=pattern.matcher(firstName);
+			if(!matcher.matches())
+			{
+				System.out.println("Please Try Again!!!!!");
+			}
+			
+		}while(!matcher.matches());
+		
+		
+		
+		Pattern pattern2=Pattern.compile(namevalidate);
+		Matcher matcher2=null;
+		do
+		{
+			System.out.println("Enter Your Last Name: ");
+			lastName=utility.next();
+			matcher2=pattern.matcher(lastName);
+			if(!matcher2.matches())
+			{
+				System.out.println("Please Try Again!!!!!");
+			}
+		}while(!matcher2.matches());
+		
+		
+
+		
+		Pattern pattern3=Pattern.compile(contactvalidate);
+		Matcher matcher3=null;
+		do
+		{
+			System.out.println("Enter Contact Number: ");
+			contact=utility.next();
+			matcher3=pattern3.matcher(contact);
+			if(!matcher3.matches())
+			{
+				System.out.println("Please Try Again!!!!!");
+			}
+		}while(!matcher3.matches());
+		
+		
+		
+		SimpleDateFormat formater=new SimpleDateFormat("dd/MM/yyyy");
+		Date date=new Date();
+		String stringdate=formater.format(date);
+		input=input.replace("<<name>>", firstName);
+		input=input.replace("<<full name>>",firstName+" "+lastName);
+		input=input.replace("xxxxxxxxxx", contact);
+		input=input.replace("01/01/2016", stringdate);
+		System.out.println(input);
+		
+		
+		
+	}
 }
+	
+	

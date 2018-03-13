@@ -35,7 +35,7 @@ public class TwoDPrime {
 			
 			for(col=0;col<10;col++)
 			{
-				if()
+				
 			}
 				/*int col=0;
 				switch(row)
