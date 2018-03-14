@@ -967,6 +967,7 @@ public class Utility {
 			parser=new JSONParser();
 			json=(JSONObject) parser.parse(fileReader);
 			rice=(JSONObject) json.get("Rice");
+			
 			total=(Long)rice.get("Weight")*(Long)rice.get("Price");
 			rice.put("Total",total);
 			
@@ -1141,11 +1142,120 @@ public class Utility {
 		input=input.replace("<<full name>>",firstName+" "+lastName);
 		input=input.replace("xxxxxxxxxx", contact);
 		input=input.replace("01/01/2016", stringdate);
-		System.out.println(input);
-		
-		
-		
+		System.out.println(input);	
 	}
+	
+	/**
+	 * purpose: Reads json File
+	 * @param file file from which json object is to be read
+	 * @return returns Object of json
+	 */
+	public static JSONObject readJsonFile(String path)
+	{
+		File file=null;
+		FileReader read=null;
+		JSONParser parser=null;
+		JSONObject jsonObject=null;
+		try
+		{
+			file=new File(path);
+			boolean empty = !file.exists() || file.length() == 0;
+			if(!empty)
+			{
+				read=new FileReader(file);
+				parser=new JSONParser();
+				jsonObject=(JSONObject) parser.parse(read);
+			}
+			else
+			{
+				return null;
+			}
+		}
+		catch(IOException | ParseException exception)
+		{
+			exception.printStackTrace();
+			
+		}
+		finally
+		{
+			try
+			{
+				read.close();
+			}
+			catch(IOException exception2)
+			{
+				exception2.printStackTrace();
+			}
+		}
+		return jsonObject;
+	}
+	
+	/**
+	 * purpose:Writes json object to the specific folder
+	 * @param file file to which json object is to be written
+	 * @param jsonObject json object 
+	 */
+	public static void writeJsonFile(String file,JSONObject jsonObject)
+	{
+		FileWriter write=null;
+	
+		try
+		{
+			write=new FileWriter(file);
+			write.write(jsonObject.toJSONString());
+		}
+		catch(IOException exception)
+		{
+			exception.printStackTrace();
+			
+		}
+		finally
+		{
+			try
+			{
+				write.close();
+			}
+			catch(IOException exception2)
+			{
+				exception2.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 	
 	
