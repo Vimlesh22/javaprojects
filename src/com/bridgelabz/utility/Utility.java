@@ -73,6 +73,21 @@ public class Utility {
 		return "";
 	}
 	/**
+	  * Method to take Long as input considering spaces.  
+	  */
+	public long nextLong()
+	{
+		try
+		{
+			return sc.nextLong();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return 0;
+	}
+	/**
 	  * Method to take Double value as input.  
 	  */
 	public double nextDouble()
