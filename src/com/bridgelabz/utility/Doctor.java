@@ -13,9 +13,7 @@ public class Doctor {
 		this.specialization = specialization;
 		this.availibity = availibity;
 	}
-	public Doctor() {
-		super();
-	}
+	
 	public int getDoctorId() {
 		return doctorId;
 	}

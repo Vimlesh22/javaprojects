@@ -6,10 +6,6 @@ public class Patient {
 	private int patientId;
 	private long mobileNo;
 	
-	public Patient() {
-		super();
-	}
-
 	public Patient(String patientName, int patientId, long mobileNo) {
 		super();
 		this.patientName = patientName;

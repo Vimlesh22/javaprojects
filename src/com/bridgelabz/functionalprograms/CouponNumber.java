@@ -1,5 +1,7 @@
 package com.bridgelabz.functionalprograms;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 import com.bridgelabz.utility.Utility;
 
 public class CouponNumber {
@@ -10,14 +12,18 @@ public class CouponNumber {
 			System.out.println("Enter a Number");
 			int num=utility.nextInt();
 			int arr[]=new int[num];
-			for(int i=0;i<num;i++)
-			{
-				arr[i]=i+1;
-			}
-			for(int j=0;j<num;j++)
+			
+			for(int i=0;i<arr.length;i++)
 			{
 				
-				System.out.print(arr[j]+" ");
+				int randomNum = ThreadLocalRandom.current().nextInt(1, num + 1);
+				arr[i]=randomNum;
+			
+				
+			}
+			for(int i=0;i<arr.length;i++)
+			{
+				System.out.print(arr[i]+" ");
 			}
 		
 	}
