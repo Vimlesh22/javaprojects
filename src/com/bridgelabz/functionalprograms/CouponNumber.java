@@ -11,19 +11,18 @@ public class CouponNumber {
 		
 			System.out.println("Enter a Number");
 			int num=utility.nextInt();
-			int arr[]=new int[num];
+			ArrayList<Integer> coupon;
+			int counter=0;
+			while(coupon.size()!=num){
 			
-			for(int i=0;i<arr.length;i++)
-			{
-				
-				int randomNum = ThreadLocalRandom.current().nextInt(1, num + 1);
-				arr[i]=randomNum;
-			
-				
+			int randomNumber=ThreadLocalRandom.current().nextInt(0, num);
+			//System.out.print(randomNumber+" ");
+			if(coupon.contains(randomNumber)){
+				counter++;
 			}
-			for(int i=0;i<arr.length;i++)
-			{
-				System.out.print(arr[i]+" ");
+			else{
+				counter++;
+				coupon.add(num);
 			}
 		
 	}
