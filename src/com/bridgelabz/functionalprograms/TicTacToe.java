@@ -9,7 +9,7 @@ public class TicTacToe {
 
 	public static void main(String[] args) {
 		Utility utility=new Utility();
-		int row,column,i,j,randomRow,randomColumn;
+		int row,column,i,j,randomRow=0,randomColumn=0;
 		System.out.println("**********Tic Tac Toe************");
 		String array[][]=new String[3][3];
 		for(i=0;i<3;i++)
@@ -47,16 +47,29 @@ public class TicTacToe {
 					array[row][column]="X";
 				}
 			}while(array[row][column]=="*");
+			
 			do
 			{
 				randomRow=ThreadLocalRandom.current().nextInt(0, 3);
 				randomColumn=ThreadLocalRandom.current().nextInt(0, 3);
-				array[randomRow][randomColumn]="0";
-			}while(array[randomRow][randomColumn]=="X" || array[randomRow][randomColumn]=="0");
+				if(array[randomRow][randomColumn]=="*" )
+				{
+					array[randomRow][randomColumn]="0";
+				}
+				
+			}while(array[randomRow][randomColumn]=="*");
 			
-			
+			for(i=0;i<array.length;i++)
+			{
+				for(j=0;j<array.length;j++)
+				{
+					System.out.print(array[i][j]+"  ");
+				}
+				System.out.println("");	
+				System.out.println("");	
+			}
 		}while(count!=9);
-		System.out.println("");
+		
 		
 
 	}

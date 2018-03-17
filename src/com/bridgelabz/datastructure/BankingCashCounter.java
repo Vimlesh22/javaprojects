@@ -58,6 +58,11 @@ public class BankingCashCounter {
 				case 3:
 					queue.display();
 					break;
+					
+					
+				case 4:
+					System.exit(0);
+					
 						
 			}
 		}while(loop!=0);

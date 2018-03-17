@@ -7,6 +7,8 @@
  **********************************************************/
 package com.bridgelabz.utility;
 
+import static com.bridgelabz.utility.Utility.primeChecker;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -15,8 +17,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -1238,9 +1242,81 @@ public class Utility {
 	}
 	
 	
+	public static double numberofbinarytree(double number)
+	{
+		double numberofbinary=(factorial(2*number))/(factorial(number+1)*factorial(number));
+		return numberofbinary;
+	}
+	
+	public static double factorial(double number)
+	{
+		
+		double factorial=1;
+		if(number>0)
+		{
+			for(double i=1;i<=number;i++)
+			{
+				factorial=factorial*i;
+				
+			}
+			return factorial;
+		}
+		if(number==0)
+		{
+			return 1;
+		}
+		else
+		{
+			return -1;
+		}
+		
+		
+	}
+	
+	public static boolean primeChecker(String str)
+	{
+		DeQueue<Character> dequeue=new DeQueue<Character>(str.length());
+		DeQueue<Character> dequeue1=new DeQueue<Character>(str.length());
+		String str1="";
+		String str2="";
+		for(int i=0;i<str.length();i++)
+		{
+			dequeue.addAtEnd(str.charAt(i));
+		}
+		str1=dequeue.toString();
+		for(int i=0;i<str.length();i++)
+		{
+			dequeue1.addAtBegin(str.charAt(i));
+		}
+		str2=dequeue1.toString();
+		if(str1.equals(str2))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 	
-	
+	public static Object[] palindromePrime(String[] primeArray)
+	{
+		List<String> palindromePrime=new ArrayList<String>();
+		
+		for(int i=0;i<primeArray.length;i++)
+		{
+			boolean primecheck=primeChecker(primeArray[i]);
+			if(primecheck==true)
+			{
+				palindromePrime.add(primeArray[i]);
+			}
+		}
+		
+		
+		return palindromePrime.toArray();
+		
+	}
 	
 	
 	

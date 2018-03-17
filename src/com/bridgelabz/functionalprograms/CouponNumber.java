@@ -1,5 +1,7 @@
 package com.bridgelabz.functionalprograms;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.bridgelabz.utility.Utility;
@@ -11,25 +13,28 @@ public class CouponNumber {
 		
 			System.out.println("Enter a Number");
 			int num=utility.nextInt();
-			int arr[]=new int[num];
-			
-			for(int i=0;i<arr.length;i++)
+			int randomNumber;
+			ArrayList<Integer> coupon=new ArrayList<>();
+			int counter=0;
+			while(coupon.size()!=num)
 			{
-				
-				int randomNum = ThreadLocalRandom.current().nextInt(1, num + 1);
-				arr[i]=randomNum;
 			
-				
+				randomNumber=ThreadLocalRandom.current().nextInt(0, num);
+				if(coupon.contains(randomNumber))
+				{
+					counter++;
+				}
+				else
+				{
+					counter++;
+					coupon.add(randomNumber);
+				}	
 			}
-			for(int i=0;i<arr.length;i++)
-			{
-				System.out.print(arr[i]+" ");
-			}
-		
+			System.out.println("No of iteration to find distinct coupons:"+counter);
+			System.out.println(coupon.toString());
 	}
 
 	public static void main(String[] args) {
 		couponnumber();
-	}
-
+}
 }
