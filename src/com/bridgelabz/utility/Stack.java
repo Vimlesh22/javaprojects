@@ -63,5 +63,17 @@ public class Stack<T> {
 		
 	}
 	
+	public void display()
+	{
+		if(isEmpty())
+		{
+			System.out.println("List is Empty!!!!");
+		}
+		else
+		{
+			stack.printList();
+		}
+	}
+	
 
 }

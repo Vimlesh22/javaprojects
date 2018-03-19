@@ -3,80 +3,114 @@ package com.bridgelabz.algorithms;
 
 import com.bridgelabz.utility.Utility;
 
-public class MergeSort {
 
-	public static void merge(int array[] ,int p,int q,int r)
-	{
-		int sortedarray[]=new int[array.length];
-		int k=0;
-		int i=0;
-		int j=0;
-		
- 		int n1=q-p+1;
-		System.out.println("n1: "+n1);
-		int n2=(r-q);
-		System.out.println("n2: "+n2);
-		
-		int leftarray[]=new int[n1+1] ;
-		int rightarray[]=new int[n2+1] ;
-		for(i=p;i<n1;i++)
-		{
-			leftarray[(i-p)]=array[p+i];
-		}
-		for(j=0;j<n2;j++)
-		{
-			rightarray[j]=array[q+i];
-		}
-		
-		leftarray[n1]=(int) Float.POSITIVE_INFINITY;
-		rightarray[n2]=(int) Float.POSITIVE_INFINITY;
-		for(k=p;k<=r;k++)
-		{
-			if(leftarray[i]<=rightarray[j])
-			{
-				array[k]=leftarray[i];
-				i++;	
-			}
-			else{
-				array[k]=rightarray[j];
-				j++;
-			}
-		}
-		for(int s=0;s<sortedarray.length;s++)
-		{
-			System.out.println(sortedarray[s]+" ");
-		}
-	}
-	
-	public static void mergeSort(int array[],int p,int r)
-	{
-		System.out.println(p+" "+r);
-		int q;
-		if(p<r)
-		{
-			q=(p+r)/2;
-			
-			mergeSort(array, p, q);
-			mergeSort(array, q+1, r);
-			merge(array, p, q, r);
-		}
-
-	}
-	
-	
-	public static void main(String[] args) {
-		Utility utility=new Utility();
-		System.out.println("Enter Size of array");
-		int size=utility.nextInt();
-		int array[]=new int[size];
-		System.out.println("Enter element in array");
-		for(int i=0;i<array.length;i++)
-		{
-			array[i]=utility.nextInt();
-		}
-		System.out.println("Array Length"+(array.length-1));
-		mergeSort(array,0,array.length-1);
-		
-	}
-
+class MergeSort
+{
+    // Merges two subarrays of arr[].
+    // First subarray is arr[l..m]
+    // Second subarray is arr[m+1..r]
+    void merge(int arr[], int l, int m, int r)
+    {
+        // Find sizes of two subarrays to be merged
+        int n1 = m - l + 1;
+        int n2 = r - m;
+ 
+        /* Create temp arrays */
+        int L[] = new int [n1];
+        int R[] = new int [n2];
+ 
+        /*Copy data to temp arrays*/
+        for (int i=0; i<n1; ++i)
+            L[i] = arr[l + i];
+        for (int j=0; j<n2; ++j)
+            R[j] = arr[m + 1+ j];
+ 
+ 
+        /* Merge the temp arrays */
+ 
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
+ 
+        // Initial index of merged subarry array
+        int k = l;
+        while (i < n1 && j < n2)
+        {
+            if (L[i] <= R[j])
+            {
+                arr[k] = L[i];
+                i++;
+            }
+            else
+            {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+ 
+        /* Copy remaining elements of L[] if any */
+        while (i < n1)
+        {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+ 
+        /* Copy remaining elements of R[] if any */
+        while (j < n2)
+        {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+ 
+    // Main function that sorts arr[l..r] using
+    // merge()
+    void sort(int arr[], int l, int r)
+    {
+        if (l < r)
+        {
+            // Find the middle point
+            int m = (l+r)/2;
+ 
+            // Sort first and second halves
+            sort(arr, l, m);
+            sort(arr , m+1, r);
+ 
+            // Merge the sorted halves
+            merge(arr, l, m, r);
+        }
+    }
+ 
+    /* A utility function to print array of size n */
+    static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+ 
+    // Driver method
+    public static void main(String args[])
+    {
+    	Utility utility=new Utility();
+    	System.out.println("Enter Size of array:");
+    	int size=utility.nextInt();
+        int arr[] =new int[size];
+        System.out.println("Enter Array elements");
+        for(int i=0;i<arr.length;i++)
+        {
+        	arr[i]=utility.nextInt();
+        }
+        System.out.println("Array Elements:");
+        printArray(arr);
+ 
+        MergeSort ob = new MergeSort();
+        ob.sort(arr, 0, arr.length-1);
+ 
+        System.out.println("\nSorted array");
+        printArray(arr);
+    }
 }

@@ -32,7 +32,7 @@ public class StopWatch {
 				System.out.println("else");
 				System.exit(0);
 			}
-			System.out.println("Time elapsed :"+timeelapse+"millisecond");
+			System.out.println("Time elapsed :"+timeelapse/60+"millisecond");
 			
 		
 	}

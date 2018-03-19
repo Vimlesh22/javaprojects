@@ -20,6 +20,8 @@ public class AddressBookUserInterface {
 			System.out.println("2)Edit Person ");
 			System.out.println("3)Delete Person");
 			System.out.println("4)Display Person");
+			System.out.println("5)Search Person");
+			System.out.println("6)Exit");
 			System.out.println("*****************************");
 			System.out.println("Enter Your Choice:");
 			choice=utility.nextInt();
@@ -96,6 +98,9 @@ public class AddressBookUserInterface {
 				case 4:
 					addressBook.display();
 					break;
+					
+				case 6:
+					System.out.println();
 					
 					
 					

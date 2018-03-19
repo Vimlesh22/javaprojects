@@ -1,9 +1,10 @@
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Queue;
+import com.bridgelabz.utility.Stack;
 import com.bridgelabz.utility.Utility;
 
-public class CalendarQueue {
+public class StackCalendar {
 
 	public static void main(String[] args) {
 		Utility utility=new Utility();
@@ -12,10 +13,11 @@ public class CalendarQueue {
 		int month=utility.nextInt();
 		System.out.println("Enter Year:");
 		String year=utility.next();
-		Queue<String>[] queueCalendar=new Queue[7];
+		//String[] daychar={"Sun","Mon","Tue","Wed","Thr","Fri","Sat"};
+		Stack<String>[] stack=new Stack[7];
 		for(int i=0;i<7;i++)
 		{
-			queueCalendar[i]=new Queue<>(7);
+			stack[i]=new Stack<String>(7);
 		}
 		String[][] calendar=utility.calendar(month, year);
 		for(int i=0;i<7;i++)
@@ -34,15 +36,15 @@ public class CalendarQueue {
 					calendar[i][j]="        ";
 				}
 				
-				queueCalendar[i].enqueue(calendar[i][j]);
+				stack[i].push(calendar[i][j]);
 				
 			}
 		}
-
 		for(int i=0;i<7;i++)
 		{
-				queueCalendar[i].display();
+			stack[i].display();
 		}
+		
 		
 
 	}

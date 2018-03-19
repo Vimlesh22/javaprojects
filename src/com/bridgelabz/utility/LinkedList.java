@@ -143,6 +143,7 @@ public class LinkedList<T> {
 		}
 	}
 	
+	
 	public T getLastElement()
 	{
 		return tail.getData();

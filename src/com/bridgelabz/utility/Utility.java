@@ -7,7 +7,11 @@
  **********************************************************/
 package com.bridgelabz.utility;
 
-import static com.bridgelabz.utility.Utility.primeChecker;
+
+
+import static com.bridgelabz.utility.Utility.anagram;
+import static com.bridgelabz.utility.Utility.palindromePrime;
+import static com.bridgelabz.utility.Utility.primeNumber;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,9 +24,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Map.Entry;
@@ -346,7 +352,83 @@ public class Utility {
     		find(mid+1,up);
     	}
 	}
-
+	/**
+	 * Purpose: creates 2d array of range of prime numbers
+	 * @param range max range of prime numbers
+	 * @return 2d array of prime numbers
+	 */
+	public static String[][] twoDPrimeNumber(int range,int col)
+	{
+		String array[][]=new String[100][col];
+		String str=primeNumber(range);
+		int a=100,b=-1,c=0;
+		int temp=0;
+		for(int i=0;i<col;i++)
+		{
+			array[0][i]=temp+"-"+(temp+100);
+			temp=temp+100;
+		}
+		temp=2;
+	
+		for(int i=0;i<col;i++)
+		{
+			for(int j=1;j<100;j++)
+			{
+				for(int k=temp;k<a;k++)
+				{
+					
+					if(str.contains(primeNumber(k)))
+					{
+						array[j][i]=""+k;
+						temp=k+1;
+						break;
+					}
+					if(k==range)
+					{
+						b=range;
+						break;
+					}
+				}
+			}
+			c=c+100;
+			temp=c;
+			a=a+100;
+			if(b==range)
+			{
+				break;
+			}
+		}
+		return array;
+	}
+	/**
+	 * Purpose: removing null values from 2d arrays
+	 * @param array 2d array input
+	 * @param col number of columns
+	 * @return null free 2d array
+	 */
+	public static String[][] removeNull(String[][] array,int col)
+	{
+		for(int i=1;i<100;i++)
+		{
+			for(int j=0;j<col;j++)
+			{
+				if(array[i][j]!=null)
+				{
+					do
+					{
+						array[i][j]=array[i][j]+" ";
+					}
+					while(array[i][j].length()<=6);
+				}
+				if(array[i][j]==null)
+				{
+					array[i][j]="";
+				}
+			}
+		}
+		return array;
+	}
+/**
 	
 	/**
 	 * purpose:Given two strings are to be checked for anagram.
@@ -1302,20 +1384,108 @@ public class Utility {
 	
 	public static Object[] palindromePrime(String[] primeArray)
 	{
-		List<String> palindromePrime=new ArrayList<String>();
+		List<String> palindromePrime1=new ArrayList<String>();
 		
 		for(int i=0;i<primeArray.length;i++)
 		{
 			boolean primecheck=primeChecker(primeArray[i]);
 			if(primecheck==true)
 			{
-				palindromePrime.add(primeArray[i]);
+				palindromePrime1.add(primeArray[i]);
 			}
 		}
 		
+		String[] primePalindrome = new String[palindromePrime1.size()];
+		for(int i=0;i<primePalindrome.length;i++)
+		{
+			primePalindrome[i]=(String)primePalindrome[i];
+			
+		}
 		
-		return palindromePrime.toArray();
+		return palindromePrime1.toArray();
 		
+	}
+	
+	public static void primeAnagramPalindrome(int range)
+	{
+				//get string of prime number and convert string into string array
+				String prime=primeNumber(range);
+				System.out.println("Prime Number: \n"+prime);
+				String[] primeArray=prime.split(" ");
+				
+				//logic for prime palindrome and displaying
+				Object[] primePalindromeObject=palindromePrime(primeArray);
+				String[] primePalindrome = new String[primePalindromeObject.length];
+				for(int i=0;i<primePalindrome.length;i++)
+				{
+					primePalindrome[i]=(String)primePalindromeObject[i];
+					
+				}
+				System.out.println("Prime Palindrome:");
+				for(int i=0;i<primePalindrome.length;i++)
+				{
+					System.out.print(primePalindrome[i]+" ");;
+					
+				}
+				System.out.println("");
+				
+				//prime anagram logic and displaying list of prime anagram numbers
+				boolean result;
+				TreeSet<String> primeAnagram=new TreeSet<String>();
+				for(int i=0;i<primeArray.length;i++)
+				{
+					for(int j=i+1;j<primeArray.length;j++)
+					{
+						result=anagram(primeArray[i], primeArray[j]);
+						if(result==true)
+						{
+							primeAnagram.add(primeArray[j]);
+							primeAnagram.add(primeArray[i]);
+						}
+					}
+				}
+				
+				//prime anagram palindrome logic and displaying it 
+				String[] primeAnagramString=new String[primeAnagram.size()];
+				int k=0;
+				Iterator<String> iterator=primeAnagram.iterator();
+				System.out.println("Prime Anagram");
+				while(iterator.hasNext())
+				{
+					primeAnagramString[k]=iterator.next();
+					k++;
+				}
+				for(int i=0;i<primeAnagramString.length;i++)
+				{
+					System.out.print(primeAnagramString[i]+" ");
+				}
+				System.out.println("");
+				
+				String[] primeAnaPalidrome=new String[primeAnagramString.length];
+				for(int i=0;i<primeAnagramString.length;i++)
+				{
+					for(int j=0;j<primePalindrome.length;j++)
+					{
+						if(primeAnagramString[i]==primePalindrome[j])
+						{
+							primeAnaPalidrome[i]=primeAnagramString[i];
+						}
+						if(primeAnaPalidrome[i]==null)
+						{
+							primeAnaPalidrome[i]="";
+						}
+					
+					}
+				}
+				System.out.println("PrimeAnagramPalindrome:" );
+				for(int p=0;p<primeAnaPalidrome.length;p++)
+				{
+					if(primeAnaPalidrome[p]!="")
+					{
+						System.out.print(primeAnaPalidrome[p]+" ");
+					}
+				}
+			 
 	}
 	
 	
