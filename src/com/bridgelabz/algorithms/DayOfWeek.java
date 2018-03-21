@@ -1,6 +1,12 @@
+/**
+ * Purpose:To find the day of week
+ * @author Vimlesh Kumar
+ * @since 1 March 2018
+ */
 package com.bridgelabz.algorithms;
 import static com.bridgelabz.utility.Utility.*;
 import com.bridgelabz.utility.Utility;
+
 
 public class DayOfWeek {
 

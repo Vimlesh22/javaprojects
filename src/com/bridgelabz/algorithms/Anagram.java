@@ -1,7 +1,15 @@
+/**
+ * Purpose:Finding the given string is an anagram or not.
+ * @author Vimlesh Kumar
+ * @since 28 Feb 2018
+ *
+ */
+
 package com.bridgelabz.algorithms;
 
 import static com.bridgelabz.utility.Utility.*;
 import com.bridgelabz.utility.Utility;
+
 public class Anagram {
 	
 
@@ -9,12 +17,12 @@ public class Anagram {
 	{
 		Utility util=new Utility();
 		System.out.println("Enter a string");
-		String str1= util.nextLine();
+		String string1= util.nextLine();
 		System.out.println("Enter a string to check anagram");
-		String str2=util.nextLine();
+		String string2=util.nextLine();
 
 
-		boolean result=anagram(str1,str2);
+		boolean result=anagram(string1,string2);
 		if(result==true)
 		{
 			System.out.println("Given String is an anagram!!!");

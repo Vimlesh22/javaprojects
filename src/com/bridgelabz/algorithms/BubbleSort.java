@@ -1,8 +1,16 @@
+/**
+ * Purpose:To sort the array using bubble sort method 
+ * @author Vimlesh Kumar
+ * @since 28 Feb 2018
+ *
+ */
+
 package com.bridgelabz.algorithms;
 
 import static com.bridgelabz.utility.Utility.*;
 import com.bridgelabz.utility.Utility;
 import java.util.Arrays;
+
 
 public class BubbleSort {
 

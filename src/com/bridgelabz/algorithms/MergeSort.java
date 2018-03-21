@@ -1,10 +1,16 @@
+/**
+ * Purpose:To Merge Sort an array, we divide it into two halves, sort the two halves independently, 
+ * and then merge the results to sort the full array,using recursion.
+ * @author Vimlesh Kumar
+ * @since 1 March 2018
+ *
+ */
+
 package com.bridgelabz.algorithms;
-
-
 import com.bridgelabz.utility.Utility;
 
 
-class MergeSort
+public class MergeSort
 {
     // Merges two subarrays of arr[].
     // First subarray is arr[l..m]

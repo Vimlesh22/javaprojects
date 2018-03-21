@@ -1,3 +1,10 @@
+/**
+ * Purpose:Reads in strings from standard input and prints them in sorted order
+ * Uses insertion sort.
+ * @author Vimlesh Kumar
+ * @since 1 March 2018
+ *
+ */
 package com.bridgelabz.algorithms;
 import static com.bridgelabz.utility.Utility.*;
 import com.bridgelabz.utility.Utility;

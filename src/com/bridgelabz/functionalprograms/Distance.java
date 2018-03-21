@@ -1,3 +1,10 @@
+/**
+ * Purpose:Takes two integer command-line arguments x and y and prints the Euclidean distance from the point (x, y) to the origin (0, 0).
+ * @author Vimlesh Kumar
+ * @since 8 March 2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 
 public class Distance {

@@ -1,3 +1,13 @@
+/**
+ * Purpose:To find the  given the temperature in fahrenheit as input outputs the temperature in Celsius or viceversa 
+ * using the formula:
+ *	Celsius to Fahrenheit:   (°C × 9/5) + 32 = °F
+ *	Fahrenheit to Celsius:   (°F − 32) x 5/9 = °C
+ * @author Vimlesh Kumar
+ * @since 3 March 2018
+ *
+ */
+
 package com.bridgelabz.algorithms;
 import static com.bridgelabz.utility.Utility.celToFah;
 import static com.bridgelabz.utility.Utility.fahToCel;

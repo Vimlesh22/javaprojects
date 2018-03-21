@@ -1,7 +1,13 @@
+/**
+ * Purpose:To find distinct coupon number in the specified range taking range as input from user.
+ * @author Vimlesh Kumar
+ * @since 8 March 2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.bridgelabz.utility.Utility;
@@ -18,7 +24,6 @@ public class CouponNumber {
 			while(coupon.size()!=num){
 			
 			int randomNumber=ThreadLocalRandom.current().nextInt(0, num);
-			//System.out.print(randomNumber+" ");
 			if(coupon.contains(randomNumber)){
 				counter++;
 			}

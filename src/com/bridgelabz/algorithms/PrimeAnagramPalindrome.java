@@ -1,9 +1,10 @@
+/**
+ * Purpose:To Find prime numbers that are Anagram and Palindrome 
+ * @author Vimlesh Kumar
+ * @since 3 March 2018
+ *
+ */
 package com.bridgelabz.algorithms;
-
-
-
-
-
 import com.bridgelabz.utility.Utility;
 
 

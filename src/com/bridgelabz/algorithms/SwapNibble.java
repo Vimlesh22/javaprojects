@@ -1,3 +1,10 @@
+/**
+ * Purpose:To find the decimal number by swapping the nibble of the original number.
+ * @author Vimlesh Kumar
+ * @since 3 March 2018
+ *
+ */
+
 package com.bridgelabz.algorithms;
 
 import static com.bridgelabz.utility.Utility.*;

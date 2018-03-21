@@ -1,3 +1,12 @@
+/**
+ * Purpose: To calculate the minimum number of Notes 
+ * as well as the Notes to be returned by the Vending Machine as a Change
+ * @author Vimlesh Kumar
+ * @since 5 March 2018
+ *
+ */
+
+
 package com.bridgelabz.algorithms;
 import static com.bridgelabz.utility.Utility.calculateMinNoNote;
 import com.bridgelabz.utility.Utility;
