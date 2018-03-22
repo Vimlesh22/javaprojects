@@ -360,7 +360,7 @@ public class Utility {
 	public static String[][] twoDPrimeNumber(int range,int col)
 	{
 		String array[][]=new String[100][col];
-		String str=primeNumber(range);
+		String primeNumber=primeNumber(range);
 		int a=100,b=-1,c=0;
 		int temp=0;
 		for(int i=0;i<col;i++)
@@ -377,7 +377,7 @@ public class Utility {
 				for(int k=temp;k<a;k++)
 				{
 					
-					if(str.contains(primeNumber(k)))
+					if(primeNumber.contains(primeNumber(k)))
 					{
 						array[j][i]=""+k;
 						temp=k+1;

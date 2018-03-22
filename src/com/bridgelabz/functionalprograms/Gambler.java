@@ -4,7 +4,7 @@ package com.bridgelabz.functionalprograms;
 import com.bridgelabz.utility.Utility;
 
 public class Gambler {
-	static int win=0,bet=0,lose=0;
+	static float win=0,bet=0,lose=0;
 	public static void gambler()
 	{
 			Utility utility=new Utility();
@@ -47,6 +47,11 @@ public class Gambler {
 		
 		
 		System.out.println("Win: "+win+"\nlose:"+lose);
+		System.out.println("*******************************");
+		float winpercent=(win/(win+lose))*100;
+		float losepercent=(lose/(win+lose))*100;
+		System.out.println("Win  %  = "+winpercent);
+		System.out.println("Lose %  = "+losepercent);
 	}
 		
 	public static void main(String[] args) {

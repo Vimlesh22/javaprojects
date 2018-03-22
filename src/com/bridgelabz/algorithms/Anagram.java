@@ -18,9 +18,10 @@ public class Anagram {
 		Utility util=new Utility();
 		System.out.println("Enter a string");
 		String string1= util.nextLine();
+		string1=string1.replaceAll(" ","");
 		System.out.println("Enter a string to check anagram");
 		String string2=util.nextLine();
-
+		string2=string2.replaceAll(" ","");
 
 		boolean result=anagram(string1,string2);
 		if(result==true)

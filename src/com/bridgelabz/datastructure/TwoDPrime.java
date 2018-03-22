@@ -11,25 +11,25 @@ public class TwoDPrime
 	public static void main(String[] args) 
 	{
 		Utility utility=new Utility();
-		int col;
+		int column;
 		String array[][];
 		System.out.println("Enter range=");
 		int range=utility.nextInt();
 		if(range%100==0)
 		{
-			col=range/100;
-			array=new String[100][col];
+			column=range/100;
+			array=new String[100][column];
 		}
 		else
 		{
-			col=(range/100)+1;
-			array=new String[100][col];
+			column=(range/100)+1;
+			array=new String[100][column];
 		}
-		array=twoDPrimeNumber(range,col);
-		array=removeNull(array, col);
+		array=twoDPrimeNumber(range,column);
+		array=removeNull(array, column);
 		for(int i=0;i<100;i++)
 		{
-			for(int j=0;j<col;j++)
+			for(int j=0;j<column;j++)
 			{
 				System.out.print(array[i][j]+"  ");
 				if(array[i][j]=="")
