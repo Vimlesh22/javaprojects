@@ -74,6 +74,17 @@ public class Stack<T> {
 			stack.printList();
 		}
 	}
+	public void displayReverse(int length)
+	{
+		if(isEmpty())
+		{
+			System.out.println("List is Empty!!!!");
+		}
+		else
+		{
+			stack.printReverseList(length);
+		}
+	}
 	
 
 }

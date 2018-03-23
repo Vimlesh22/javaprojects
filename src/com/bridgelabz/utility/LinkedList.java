@@ -1,4 +1,5 @@
 package com.bridgelabz.utility;
+import static com.bridgelabz.utility.Utility.bubbleSortInteger; 
 import com.bridgelabz.utility.Node;
 
 
@@ -185,6 +186,42 @@ public class LinkedList<T> {
 			System.out.print(temp.getData()+" ");
 		}
 		System.out.println("");
+	}
+	
+	public void printReverseList(int length)
+	{
+		int[] store=null;
+		if(count==0)
+		{
+			System.out.println("List is empty!!!!");
+			
+		}
+		if(count==1)
+		{
+			System.out.print(head.getData()+" ");
+			
+		}
+		else
+		{
+			Node<T> temp=null;
+			temp=head;
+			store=new int[length];
+			int count=0;
+			while(temp.getNext()!=null)
+			{
+				store[count]=(int)temp.getData();
+				temp=temp.getNext();
+				count++;
+			}
+			/*count++;
+			store[count]=(String)temp.getData();*/
+		}
+		int[] sortedArray=bubbleSortInteger(store);
+		for(int i=sortedArray.length-1;i>0;i--)
+		{
+			System.out.print(sortedArray[i]+" ");
+		}
+		
 	}
 	
 	

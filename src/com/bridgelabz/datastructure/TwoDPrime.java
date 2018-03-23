@@ -13,7 +13,7 @@ public class TwoDPrime
 		Utility utility=new Utility();
 		int column;
 		String array[][];
-		System.out.println("Enter range=");
+		System.out.println("Enter Your range:");
 		int range=utility.nextInt();
 		if(range%100==0)
 		{
@@ -27,7 +27,7 @@ public class TwoDPrime
 		}
 		array=twoDPrimeNumber(range,column);
 		array=removeNull(array, column);
-		for(int i=0;i<100;i++)
+		for(int i=0;i<30;i++)
 		{
 			for(int j=0;j<column;j++)
 			{

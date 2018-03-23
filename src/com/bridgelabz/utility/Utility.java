@@ -10,6 +10,8 @@ package com.bridgelabz.utility;
 
 
 import static com.bridgelabz.utility.Utility.anagram;
+import static com.bridgelabz.utility.Utility.binarySearchInteger;
+import static com.bridgelabz.utility.Utility.binarySearchString;
 import static com.bridgelabz.utility.Utility.palindromePrime;
 import static com.bridgelabz.utility.Utility.primeNumber;
 
@@ -32,6 +34,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Map.Entry;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -360,7 +363,6 @@ public class Utility {
 	public static String[][] twoDPrimeNumber(int range,int col)
 	{
 		String array[][]=new String[100][col];
-		String primeNumber=primeNumber(range);
 		int a=100,b=-1,c=0;
 		int temp=0;
 		for(int i=0;i<col;i++)
@@ -377,7 +379,7 @@ public class Utility {
 				for(int k=temp;k<a;k++)
 				{
 					
-					if(primeNumber.contains(primeNumber(k)))
+					if(primeNumber1(k))
 					{
 						array[j][i]=""+k;
 						temp=k+1;
@@ -399,6 +401,27 @@ public class Utility {
 			}
 		}
 		return array;
+	}
+	
+	public static boolean primeNumber1(int number)
+	{
+		if(number==0 || number ==1)
+		{
+			return false;
+		}
+		if(number == 2)
+		{
+			return true;
+		}
+		for(int i=2;i<number;i++)
+		{
+			if(number%i==0)
+			{
+				return false;
+			}
+		}
+		return true;
+		
 	}
 	/**
 	 * Purpose: removing null values from 2d arrays
@@ -434,22 +457,23 @@ public class Utility {
 	 * purpose:Given two strings are to be checked for anagram.
 	 * One string is an anagram of another if the second is simply a rearrangement of the first. 
 	 * For example, 'heart' and 'earth' are anagrams.
-	 * @param str1 string value 
-	 * @param str2 string value which is to be checked for anagram
+	 * @param string1 string value 
+	 * @param string2 string value which is to be checked for anagram
 	 * @return
 	 */
-	public static boolean anagram(String str1,String str2)
+	public static boolean anagram(String string1,String string2)
 	{
 		
 			
 
-			char arr[]=bubbleSortStringAna(str1);
-			char arr1[]=bubbleSortStringAna(str2);
-			String s=new String(arr);
-			String s1=new String(arr1);
+			char bubbleAnagramArray1[]=bubbleSortStringAna(string1);
+			char bubbleAnagramArray2[]=bubbleSortStringAna(string2);
+			String string3=new String(bubbleAnagramArray1);
+			String string4=new String(bubbleAnagramArray2);
 			
-			if(s.equals(s1))
+			if(string3.equals(string4))
 			{
+				
 				return true;
 			}
 			else
@@ -500,24 +524,24 @@ public class Utility {
 	 */
 	public static String toBinary(int no)
 	{
-		String str="";
+		String string="";
 		
-		int arr[]=new int[50];
+		int array[]=new int[50];
 		int i=0;
 	    while (no > 0)
 	    {
 	    	
-	        arr[i] = no%2;
+	        array[i] = no%2;
 	        i++;
 	        no = no/2;
 	    }
 	    System.out.println("Binary Represented of Number is:");
 	    for (int j = i ; j >= 0 ; j--){
-	    	str+=arr[j];
-	        System.out.print(arr[j]);
+	    	string+=array[j];
+	        System.out.print(array[j]);
 	    }
 		
-	    return str;
+	    return string;
 	    
 	}
 	
@@ -1405,6 +1429,62 @@ public class Utility {
 		return palindromePrime1.toArray();
 		
 	}
+	public static String[] primeAnagram(int range)
+	{
+		//get string of prime number and convert string into string array
+		String prime=primeNumber(range);
+		String[] primeArray=prime.split(" ");
+		
+		//logic for prime palindrome and displaying
+		Object[] primePalindromeObject=palindromePrime(primeArray);
+		String[] primePalindrome = new String[primePalindromeObject.length];
+		for(int i=0;i<primePalindrome.length;i++)
+		{
+			primePalindrome[i]=(String)primePalindromeObject[i];
+			
+		}
+		/*System.out.println("Prime Palindrome:");
+		for(int i=0;i<primePalindrome.length;i++)
+		{
+			System.out.print(primePalindrome[i]+" ");;
+			
+		}
+		System.out.println("");*/
+		
+		//prime anagram logic and displaying list of prime anagram numbers
+		boolean result;
+		TreeSet<String> primeAnagram=new TreeSet<String>();
+		for(int i=0;i<primeArray.length;i++)
+		{
+			for(int j=i+1;j<primeArray.length;j++)
+			{
+				result=anagram(primeArray[i], primeArray[j]);
+				if(result==true)
+				{
+					primeAnagram.add(primeArray[j]);
+					primeAnagram.add(primeArray[i]);
+				}
+			}
+		}
+		
+		//prime anagram palindrome logic and displaying it 
+		String[] primeAnagramString=new String[primeAnagram.size()];
+		int k=0;
+		Iterator<String> iterator=primeAnagram.iterator();
+		System.out.println("Prime Anagram");
+		while(iterator.hasNext())
+		{
+			primeAnagramString[k]=iterator.next();
+			k++;
+		}
+		/*for(int i=0;i<primeAnagramString.length;i++)
+		{
+			System.out.print(primeAnagramString[i]+" ");
+		}
+		System.out.println("");*/
+		return primeAnagramString;
+		
+	}
 	
 	public static void primeAnagramPalindrome(int range)
 	{
@@ -1532,10 +1612,291 @@ public class Utility {
 	
 	
 	
+	public static void timeElapsed(int size)
+	{
+		Utility utility=new Utility();
+		System.out.println("Enter element for integer array");
+		int array6[]=new int[size];
+		for(int i=0 ;i<array6.length;i++)
+		{
+			array6[i]=utility.nextInt();
+		}
+		System.out.println("Enter element for string array");
+		String array7[]=new String[size];
+		for(int i=0 ;i<array7.length;i++)
+		{
+			array7[i]=utility.next();
+		}
+		System.out.println("Enter Elements to be searched in integer array:");
+		int searchInt=utility.nextInt();
+		System.out.println("Enter Elements to be searched in String array:");
+		String searchString=utility.next();
+		
+		long time1=System.nanoTime();
+		int position13=binarySearchInteger(array6,searchInt);
+		long time2=System.nanoTime();
+		long searchTimeInt=(time2-time1);
+		if(position13==-1)
+		{
+			System.out.println("Integer Element not found in list!!!!!!");
+			
+		}
+		else
+		{
+			System.out.println("Integer Element found at position "+position13);
+		}
+		
+		long time3=System.nanoTime();
+		int position14=binarySearchString(array7, searchString);
+		long time4=System.nanoTime();
+		long searchTimeString=(time4-time3);
+		if(position14==-1)
+		{
+			System.out.println("String Element not found in list!!!!!!");
+			
+		}
+		else
+		{
+			System.out.println("String Element found at position "+position14);
+		}
+		
+		long time5=System.nanoTime();
+		int[] sortedArrayInt=insertionSortInteger(array6);
+		long time6=System.nanoTime();
+		long sortTimeInteger=time6-time5;
+		System.out.println("Sorted integer element using insertion sort:");
+		for(int i=0;i<sortedArrayInt.length;i++)
+		{
+			System.out.print(sortedArrayInt[i]+" ");
+		}
+		System.out.println("");
+		
+		long time7=System.nanoTime();
+		String[] sortedArrayStr=insertSortSting(array7);
+		long time8=System.nanoTime();
+		long sortTimeString=time8-time7;
+		System.out.println("Sorted String element using insertion sort:");
+		for(int i=0;i<sortedArrayStr.length;i++)
+		{
+			System.out.print(sortedArrayStr[i]+" ");
+		}
+		System.out.println("");
+		
+		long time9=System.nanoTime();
+		int[] sortedBubbleArray=bubbleSortInteger(array6);
+		long time10=System.nanoTime();
+		long sortStringTimeBubble=time10-time9;
+		System.out.println("Sorted integer element using bubble Sort:");
+		for(int i=0;i<sortedBubbleArray.length;i++)
+		{
+			System.out.print(sortedBubbleArray[i]+" ");
+		}
+		System.out.println("");
+		
+		long time11=System.nanoTime();
+		String[] sortedStringBubble=bubbleSortString(array7);
+		long time12=System.nanoTime();
+		long sortedTimeBubble=time12-time11;
+		System.out.println("Sorted string element using bubble Sort:");
+		for(int i=0;i<sortedStringBubble.length;i++)
+		{
+			System.out.print(sortedStringBubble[i]+" ");
+		}
+		System.out.println("");
+		
+		int timetaken[]=new int[6];
+		timetaken[0]=(int)searchTimeInt;
+		timetaken[1]=(int)searchTimeString;
+		timetaken[2]=(int)sortTimeInteger;
+		timetaken[3]=(int)sortTimeString;
+		timetaken[4]=(int)sortStringTimeBubble;
+		timetaken[5]=(int)sortedTimeBubble;
+		System.out.println("Time taken for binary search integer                         :"+timetaken[0]);
+		System.out.println("Time taken for binary search String                          :"+timetaken[1]);
+		System.out.println("Time taken for sorting integer array using insertion sort    :"+timetaken[2]);
+		System.out.println("Time taken to sort string array using insertion sort         :"+timetaken[3]);
+		System.out.println("Time taken to sort integer array using bubble sort           :"+timetaken[4]);
+		System.out.println("Time taken to sort string array using bubble sort            :"+timetaken[5]);
+		System.out.println("*****************************************************************************");
+		System.out.println("Sorted Time in Descending order:");
+		int soertedarray[]=bubbleSortInteger(timetaken);
+		for(int i=5;i>=0;i--)
+		{
+			System.out.print(soertedarray[i]+" ");
+		}
+		System.out.println("");
+		System.out.println("*****************************************************************************");
+		System.out.println("");
+	}
 	
+	/**
+	 * purpose: Finding the result of tic tac toe game played by user and computer
+	 * @param array value of game in 2Darray form
+	 * @return result of the game played
+	 */
+	public static String ticTacToeResult(char[][] array)
+	{
+		String userWon="Player 1 User has won.";
+		String computerWon="Player 2 Computer has won.";
+		String gameDraw="It was a Draw.";
+		for(int k=0;k<3;k++)
+		{
+			int j=0;
+			for(int i=0;i<3;i++)
+			{
+				if(i==j && array[i][j]==array[i+1][j+1] && array[i+1][j+1]==array[i+2][j+2])
+				{
+					if(array[i][j]=='X')
+					{
+						return userWon;
+					}
+					else if(array[i][j]=='0')
+					{
+						return computerWon;
+					}
+				}
+				if(i+j==2 && array[i-2][j]==array[i-1][j+1] && array[i-1][j+1]==array[i][j+2])
+				{
+					if(array[i-2][j]=='X')
+					{
+						return userWon;
+					}
+					else if(array[i-2][j]=='0')
+					{
+						return computerWon;
+					}
+				}
+				
+				
+				if(array[i][j]==array[i][j+1] && array[i][j+1]==array[i][j+2])
+				{
+					if(array[i][j]=='X')
+					{
+						return userWon;
+					}
+					else if(array[i][j]=='0')
+					{
+						return computerWon;
+					}
+				}
+				if(array[j][i]==array[j+1][i] && array[j+1][i]==array[j+2][i])
+				{
+					if(array[i][j]=='X')
+					{
+						return userWon;
+					}
+					else if(array[i][j]=='0')
+					{
+						return computerWon;
+					}
+				}
+				if(array[0][2]==array[1][1] && array[1][1]==array[2][0])
+				{
+					if(array[0][2]=='X')
+					{
+						return userWon;
+					}
+					else if(array[0][2]=='0')
+					{
+						return computerWon;
+					}
+				}
+			}
+		}
+		return gameDraw;
+}
 	
-	
-	
+	public static char[][] ticTacToe(char[][] array)
+	{
+		Utility utility=new Utility();
+		String userWon="Player 1 User has won.";
+		String computerWon="Player 2 Computer has won.";
+		int row,column,randomRow=0,randomColumn=0,computer=0;
+		System.out.println("**********Tic Tac Toe************");
+		for(int i=0;i<3;i++)
+		{
+			for(int j=0;j<3;j++)
+			{
+				array[i][j]='*';
+			}
+		}
+		for(int i=0;i<3;i++)
+		{
+			for(int j=0;j<3;j++)
+			{
+				System.out.print(array[i][j]+"  ");
+			}
+			System.out.println("");
+			System.out.println("");
+		}
+		System.out.println("Player 1: User");
+		System.out.println("Player 2: Computer");
+		System.out.println("*********************************");
+		System.out.println("Player 1 will start the game:");
+		int count=0;
+		do
+		{
+					
+			do
+			{
+				System.out.println("Enter row and coloumn");
+				row=utility.nextInt();
+				column=utility.nextInt();
+				
+			}while(array[row][column]=='X' || array[row][column]=='0' );
+			array[row][column]='X';
+			count++;
+			if(count==9)
+			{
+				break;
+			}
+			if(count>4)
+			{
+				if(ticTacToeResult(array)==userWon || ticTacToeResult(array)==computerWon)
+				{
+					return array;
+				}
+			}
+			
+			
+			do
+			{
+				randomRow=ThreadLocalRandom.current().nextInt(0, 3);
+				randomColumn=ThreadLocalRandom.current().nextInt(0, 3);
+				if(array[randomRow][randomColumn]=='*')
+				{
+					array[randomRow][randomColumn]='0';
+					computer++;
+					count++;
+					if(count>4)
+					{
+						if(Utility.ticTacToeResult(array)==userWon || Utility.ticTacToeResult(array)==computerWon)
+						{
+							return array;
+						}
+					}
+				}
+			}
+			while(computer!=1);
+			computer=0;
+			for(int i=0;i<3;i++)
+			{
+				for(int j=0;j<3;j++)
+				{
+					System.out.print(array[i][j]+"  ");
+				}
+				System.out.println();
+				System.out.println();
+			}	
+			System.out.println("Play next turn");
+		}
+		while(count<=9);
+		return array;
+		
+
+	}
+
+
 	
 	
 	

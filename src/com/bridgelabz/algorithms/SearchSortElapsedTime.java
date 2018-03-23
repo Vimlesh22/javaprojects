@@ -3,7 +3,11 @@ package com.bridgelabz.algorithms;
 import com.bridgelabz.utility.Utility;
 import static com.bridgelabz.utility.Utility.binarySearchInteger;
 import static com.bridgelabz.utility.Utility.binarySearchString;
-
+import static com.bridgelabz.utility.Utility.timeElapsed;
+import static com.bridgelabz.utility.Utility.bubbleSortString;
+import static com.bridgelabz.utility.Utility.bubbleSortInteger;
+import static com.bridgelabz.utility.Utility.insertionSortInteger;
+import static com.bridgelabz.utility.Utility.insertSortSting;
 public class SearchSortElapsedTime {
 	
 	
@@ -18,7 +22,8 @@ public class SearchSortElapsedTime {
 			System.out.println("4)Insertion Sort String Method Time Elapsed");
 			System.out.println("5)Bubble Sort Integer Method Time Elapsed");
 			System.out.println("6)Bubble Sort String Method Time Elapsed");
-			System.out.println("7)Exit from Program");
+			System.out.println("7)Time taken for searching and sorting in descending order");
+			System.out.println("8)Exit from Program");
 			System.out.println("*****************************************************");
 			System.out.println("Enter Your Choice: ");
 			choice=utility.nextInt();
@@ -79,7 +84,7 @@ public class SearchSortElapsedTime {
 							array2[i]=utility.nextInt();
 						}
 						long timeelapsed5=System.nanoTime();
-						int[] sortedArray=utility.insertionSortInteger(array2);
+						int[] sortedArray=insertionSortInteger(array2);
 						long timeelapsed6=System.nanoTime();
 						long sortIntegerTime=timeelapsed6-timeelapsed5;
 						System.out.println("Sorted Array: ");
@@ -100,7 +105,7 @@ public class SearchSortElapsedTime {
 							array3[i]=utility.next();
 						}
 						long timeelapsed7=System.nanoTime();
-						String[] sortedArrayString=utility.insertSortSting(array3);
+						String[] sortedArrayString=insertSortSting(array3);
 						long timeelapsed8=System.nanoTime();
 						long sortStringTime=timeelapsed8-timeelapsed7;
 						System.out.println("Sorted Array: ");
@@ -120,7 +125,7 @@ public class SearchSortElapsedTime {
 						array4[i]=utility.nextInt();
 					}
 					long timeelapsed9=System.nanoTime();
-					int[] sortedArrayBubble=utility.bubbleSortInteger(array4);
+					int[] sortedArrayBubble=bubbleSortInteger(array4);
 					long timeelapsed10=System.nanoTime();
 					long sortBubbleStringTime=timeelapsed10-timeelapsed9;
 					System.out.println("Sorted Array: ");
@@ -142,7 +147,7 @@ public class SearchSortElapsedTime {
 						array5[i]=utility.next();
 					}
 					long timeelapsed11=System.nanoTime();
-					String[] sortedBubbleString=utility.bubbleSortString(array5);
+					String[] sortedBubbleString=bubbleSortString(array5);
 					long timeelapsed12=System.nanoTime();
 					long sortedBubbleTime=timeelapsed12-timeelapsed11;
 					System.out.println("Sorted Array: ");
@@ -155,11 +160,9 @@ public class SearchSortElapsedTime {
 					System.out.println("Time Elapsed to sort an array: "+sortedBubbleTime+" nanosecond");	
 				break;
 					
-					
-					
-					
-					
-					
+				case 7:
+					timeElapsed(size);
+					break;
 					
 			}
 			
