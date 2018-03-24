@@ -1315,8 +1315,58 @@ public class Utility {
 		return jsonObject;
 	}
 	
+	
 	/**
-	 * purpose:Writes json object to the specific folder
+	 * purpose: Reads json File 
+	 * @param path gives address of file from which json array is to be read
+	 * @return returns json array
+	 */
+	public static JSONArray readJsonArrayFile(String path)
+	{
+		File file=null;
+		FileReader read=null;
+		JSONParser parser=null;
+		JSONArray jsonArray=null;
+		try
+		{
+			file=new File(path);
+			boolean empty = !file.exists() || file.length() == 0;
+			if(!empty)
+			{
+				read=new FileReader(file);
+				parser=new JSONParser();
+				jsonArray=(JSONArray) parser.parse(read);
+			}
+			else
+			{
+				return null;
+			}
+		}
+		catch(IOException | ParseException exception)
+		{
+			exception.printStackTrace();
+			
+		}
+		finally
+		{
+			try
+			{
+				read.close();
+			}
+			catch(IOException exception2)
+			{
+				exception2.printStackTrace();
+			}
+		}
+		return jsonArray;
+	}
+	
+	
+	
+	
+	
+	/**
+	 * purpose:Writes json array to the specified file
 	 * @param file file to which json object is to be written
 	 * @param jsonObject json object 
 	 */
@@ -1328,6 +1378,38 @@ public class Utility {
 		{
 			write=new FileWriter(file);
 			write.write(jsonObject.toJSONString());
+		}
+		catch(IOException exception)
+		{
+			exception.printStackTrace();
+			
+		}
+		finally
+		{
+			try
+			{
+				write.close();
+			}
+			catch(IOException exception2)
+			{
+				exception2.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * purpose:Writes json array to the specific folder
+	 * @param file file to which json object is to be written
+	 * @param jsonObject json object 
+	 */
+	public static void writeJsonArrayFile(String file,JSONArray jsonArray)
+	{
+		FileWriter write=null;
+	
+		try
+		{
+			write=new FileWriter(file);
+			write.write(jsonArray.toJSONString());
 		}
 		catch(IOException exception)
 		{
@@ -1896,6 +1978,7 @@ public class Utility {
 
 	}
 
+	
 
 	
 	
