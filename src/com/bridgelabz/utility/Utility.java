@@ -34,6 +34,7 @@ import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Map.Entry;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.json.simple.JSONArray;
@@ -355,6 +356,53 @@ public class Utility {
     		find(mid+1,up);
     	}
 	}
+	
+	
+	/**
+	 * Purpose: create 2D array of anagrams that are prime number
+	 * @param range range of numbers
+	 * @param col number of columns
+	 * @return 2D array of anagrams that are prime number
+	 */
+	public static String[][] twoDPrimeAnagram(int range,int col)
+	{
+		int temp=0,temp1,temp2,temp3=1;
+		String array[][]=twoDPrimeNumber(range, col);
+		String arrayAnagram[][]=new String[100][col];
+		for(int i=0;i<col;i++)
+		{
+			arrayAnagram[0][i]=temp+"-"+(temp+100);
+			temp=temp+100;
+		}
+		for(int j=0;j<col;j++)
+		{
+			for(int i=1;i<100;i++)
+			{
+				if(array[i][j]!=null)
+				{
+					for(int k=i+1;k<100-i;k++)
+					{
+						if(array[k][j]!=null)
+						{
+							temp1=Integer.parseInt(array[i][j]);
+							temp2=Integer.parseInt(array[k][j]);
+							if(    (anagram(array[i][j], array[k][j]))  && 
+								   (primeNumber1(temp1) && primeNumber1(temp2))    )
+							{
+								arrayAnagram[temp3][j]=array[i][j];
+								temp3++;
+								arrayAnagram[temp3][j]=array[k][j];
+								temp3++;
+							}
+						}
+					}
+				}
+			}
+			temp3=1;
+		}
+		return arrayAnagram;
+}
+	
 	/**
 	 * Purpose: creates 2d array of range of prime numbers
 	 * @param range max range of prime numbers
@@ -1977,6 +2025,188 @@ public class Utility {
 		
 
 	}
+	
+	public static String[][] deckOfCards(String[][] unShuffledCards, String[] suit, String[] rank) {
+		String shuffleCards[][]=new String[52][2];
+		int row=0,column=0,countRow=0;
+		List<Integer> list=new ArrayList<Integer>();
+		//generate random number from 0 to 51 and store that number in ArrayList store the unshuffled 
+		//cards into shuffled cards
+		
+		Random random=new Random();
+		do
+		{
+			row=random.nextInt(52);
+			if(!list.contains(row))
+			{
+				list.add(row);
+				shuffleCards[countRow][column]=unShuffledCards[row][column];
+				shuffleCards[countRow][column+1]=unShuffledCards[row][column+1];
+				countRow++;
+			}
+		}
+		while(shuffleCards[51][1]==null);
+		
+		//printing shuffled cards
+		System.out.println("Shuffled Cards:");
+		for(int i=0;i<52;i++)
+		{
+			for(int j=0;j<2;j++)
+			{
+				System.out.print(shuffleCards[i][j]+"  ");
+			}
+			System.out.println();
+		}
+		
+		
+		//distributing cards among 4 players 
+		String distributeCards[][]=new String[14][5];
+		//for replacing null at intial stage with space
+		for(int i=0;i<14;i++)
+		{
+			for(int j=0;j<5;j++)
+			{
+				distributeCards[i][j]="";
+			}
+		}
+		
+		//printing all the ranks in rows
+		for(int i=1;i<14;i++)
+		{
+			distributeCards[i][0]=rank[i-1];
+		}
+		
+		//printing all the suits in column
+		for(int i=1;i<5;i++)
+		{
+			distributeCards[0][i]=suit[i-1];
+		}
+		
+		//distribute the cards to 4 player one by one from the shuffled cards and store it in distribute cards
+		int user=1;
+		for(int k=0;k<36;k++)
+		{
+			for(int i=1;i<5;i++)
+			{
+				if(shuffleCards[k][0].equals(distributeCards[0][i]))
+				{
+					for(int j=0;j<13;j++)
+					{
+						if(shuffleCards[k][1].equals(distributeCards[j+1][0]))
+						{
+							distributeCards[j+1][i]="Player "+user+"";
+							user++;
+						}
+					}
+				}
+			}
+			if(user==5)
+			{
+				user=1;
+			}
+		}
+		return distributeCards;
+
+		
+	}
+	
+	/**
+	 * @param unShuffledCards deck of cards not shuffled
+	 * @param suit Diamond,Spade,Heart,Club
+	 * @param rank 2 to 10,king,queen,jack,ace
+	 */
+	public static void queueDeckOfCards(String unShuffledCards[][],String suit[],String rank[])
+	{
+		String shuffleCards[][]=new String[52][2];
+		int row=0,column=0,countRow=0;
+		List<Integer> list=new ArrayList<Integer>();
+		Random random=new Random();
+		do
+		{
+			row=random.nextInt(52);
+			if(!list.contains(row))
+			{
+				list.add(row);
+				shuffleCards[countRow][column]=unShuffledCards[row][column];
+				shuffleCards[countRow][column+1]=unShuffledCards[row][column+1];
+				countRow++;
+			}
+		}
+		while(shuffleCards[51][1]==null);
+		
+		Queue<String> array[]=new Queue[4];
+		int count=0;
+		
+		for(int i=0;i<4;i++)
+		{
+			array[i]=new Queue<String>(9);
+		}
+		//distribute 9 cards to 4 player from shuffled cards
+		for(int i=0;i<4;i++)
+		{
+			for(int j=0;j<9;j++)
+			{
+				array[i].enqueue(shuffleCards[count][1]+shuffleCards[count++][0]);
+			}
+		}
+		//ordering of cards for each player
+		for(int i=0;i<4;i++)
+		{
+			array[i].orderString();
+		}
+		count =1;
+		Queue<String> sortedQueue[]=new Queue[4];
+		
+		//creating new object of queue for storing sorted cards
+		for(int i=0;i<4;i++)
+		{
+			sortedQueue[i]=new Queue<String>(9);
+		}
+		
+		//removing first character and string array and storing in new temp2 variable and adding it to sorted queue
+		String stringArray[]=null,temp1="",temp2="";
+		for(int i=0;i<4;i++)
+		{
+			stringArray=array[i].retrieve();
+			for(int j=0;j<9;j++)
+			{
+				temp1=stringArray[j];
+				for(int k=1;k<temp1.length();k++)
+				{
+					temp2=temp2+temp1.charAt(k);
+				}
+				sortedQueue[i].enqueue(temp2);
+				temp2="";
+			}
+		}
+		count=1;
+		for(int i=0;i<4;i++)
+		{
+			System.out.print("Player "+(count++)+"=");
+			System.out.println("[ "+sortedQueue[i].toString()+"]");
+		}
+}
+	
+	/**
+	 * @param array 2D array to align space
+	 * @return aligned 2Darray
+	 */
+	public static String[][] alignSpace(String array[][])
+	{
+		for(int i=0;i<14;i++)
+		{
+			for(int j=0;j<5;j++)
+			{
+				do
+				{
+					array[i][j]=array[i][j]+" ";
+				}
+				while(array[i][j].length()!=10);
+			}
+		}
+		return array;
+	}
+
 
 	
 

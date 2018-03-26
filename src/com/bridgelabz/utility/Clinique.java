@@ -196,6 +196,7 @@ public class Clinique {
 		 JSONArray patientJson=readJsonArrayFile(patientFile);
 		 JSONArray appointmentJson=readJsonArrayFile(appointmentFile);
 		 boolean flag=false;
+		 long noOfAppointments=0;
 		 JSONArray appointmentArrayObject=new JSONArray();
 		 
 		 JSONObject doctorObject;
@@ -244,30 +245,44 @@ public class Clinique {
 											 	patientObj.add(nameObj);
 											 	object.put("Patient", patientObj);
 											 	appointmentJson.add(k, object);
+											 	doctorObject.put("NoOfPatient",(long)doctorObject.get("NoOfPatient")+1);
+											 	doctorJson.add(doctorObject);
+											 	writeJsonArrayFile(doctorFile, doctorJson);
 											 	appointmentJson.remove(k+1);
+											 	
 											 	 writeJsonArrayFile(appointmentFile, appointmentJson);
 											 	 flag=true;
 											 	 return;
 										 }
 									 }
-									if(flag==false)
-									{
-										 System.out.println("hello");
-
-										 JSONObject patientObject1=new JSONObject();
-										 JSONObject nameObject1=new JSONObject();
-										 JSONObject newPatientObject=new JSONObject();
-										 JSONArray patientArray1=new JSONArray();
-										 nameObject1.put("PatientName", patientName);
-										 patientArray1.add(nameObject1);
-										 newPatientObject.put("DoctorName",doctorName);
-										 newPatientObject.put("Specialization",specialization);
-										 newPatientObject.put("Patient", patientArray1);
-										 appointmentJson.add(newPatientObject);
-										 writeJsonArrayFile(appointmentFile, appointmentJson);
-										 return;
-									 }
-							 }
+									 
+								if(flag==false)
+								{
+									 System.out.println("hello");
+	
+									 JSONObject patientObject1=new JSONObject();
+									 JSONObject nameObject1=new JSONObject();
+									 JSONObject newPatientObject=new JSONObject();
+									 JSONArray patientArray1=new JSONArray();
+									 nameObject1.put("PatientName", patientName);
+									 patientArray1.add(nameObject1);
+									 newPatientObject.put("DoctorName",doctorName);
+									 newPatientObject.put("Specialization",specialization);
+									 newPatientObject.put("Patient", patientArray1);
+									 appointmentJson.add(newPatientObject);
+									noOfAppointments=(long)doctorObject.get("NoOfPatient") + 1;
+									 doctorObject.put("NoOfPatient",noOfAppointments);
+									 	doctorJson.add(doctorObject);
+									 	
+									 	for(int m=0;m<doctorJson.size();m++)
+									 	{
+									 		doctorJson.remove(m+1);
+									 	}
+									 	writeJsonArrayFile(doctorFile, doctorJson);
+									 writeJsonArrayFile(appointmentFile, appointmentJson);
+									 return;
+								 }
+							}
 						 }
 					 }
 				 }

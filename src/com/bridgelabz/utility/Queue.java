@@ -14,6 +14,10 @@ public class Queue<T> {
 		rear=-1;
 		queue=new LinkedList<T>();
 	}
+	public String toString()
+	{
+		return queue.toString();
+	}
 	
 	public boolean isEmpty()
 	{
@@ -76,5 +80,16 @@ public class Queue<T> {
 			queue.printList();
 		}
 	}
+	
+	public void orderString()
+	{
+		queue.orderString();
+	}
+
+	public String[] retrieve()
+	{
+		 return queue.retrieve();
+	}
+
 
 }

@@ -54,6 +54,26 @@ public class LinkedList<T> {
 		}
 	}
 	
+	public void orderString()
+	{
+		 T temp=null;
+		 String a,b;
+		 for(Node<T> i=head;i!=null;i=i.getNext())
+		 {
+			 for(Node<T> j=i.getNext();j!=null;j=j.getNext())
+			 {
+				 a=(String)i.getData();
+				 b=(String)j.getData();
+				 if(a.compareTo(b)>0)
+				 {
+					 temp=i.getData();
+					 i.setData(j.getData());
+					 j.setData(temp);
+				 }
+			 }
+		 }
+}
+	
 	public boolean search(T value)
 	{
 		Node<T> temp=head;
@@ -238,5 +258,19 @@ public class LinkedList<T> {
 		}
 		return str;
 	}
+	
+	
+	public String[] retrieve()
+	{
+		int size=this.count;
+		String array[]=new String[count];
+		int count=0;
+		for(Node<T> i=head;i!=null;i=i.getNext())
+		{
+			array[count]=(String)i.getData();
+			count++;
+		}
+		return array;
+}
 
 }
