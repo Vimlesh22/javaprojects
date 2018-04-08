@@ -1,6 +1,14 @@
+/**
+ * Purpose:To withdraw deposit money from bank account
+ * @author Vimlesh Kumar
+ * @since 15-03-2018
+ *
+ */
+
 package com.bridgelabz.datastructure;
 import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.Utility;
+
 public class BankingCashCounter {
 
 	public static void main(String[] args) {
@@ -9,7 +17,7 @@ public class BankingCashCounter {
 		System.out.println("Enter Size of queue");
 		int size=utility.nextInt();
 		Queue<Integer> queue=new Queue<Integer>(size);
-		int ch=0;
+		int choice=0;
 		for(int i=0;i<size;i++)
 		{
 			queue.enqueue(i);
@@ -21,14 +29,14 @@ public class BankingCashCounter {
 			System.out.println("3)Display");
 			System.out.println("4)exit");
 			System.out.println("Enter your choice");
-			ch=utility.nextInt();
+			choice=utility.nextInt();
 			
-			switch(ch)
+			switch(choice)
 			{
 				case 1:
 					System.out.println("Enter Amount to deposit");
-					double depo=utility.nextDouble();
-					amount+=depo;
+					double deposit=utility.nextDouble();
+					amount+=deposit;
 					queue.dequeue();
 					loop--;
 					System.out.println("Amount in Bank"+amount);
@@ -66,61 +74,6 @@ public class BankingCashCounter {
 						
 			}
 		}while(loop!=0);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		/*do{
-			System.out.println("1)Deposit Money To Bank");
-			System.out.println("2)Withdraw Money From Bank");
-			System.out.println("3)Display");
-			System.out.println("4)exit");
-			System.out.println("Enter your choice");
-			ch=utility.nextInt();
-			switch(ch)
-			{
-				case 1:
-					System.out.println("Enter Amount to deposit");
-					double depo=utility.nextDouble();
-					amount+=depo;
-					queue.dequeue();
-					System.out.println("Amount in Bank"+amount);
-					
-					break;
-					
-				case 2:
-					System.out.println("Enter Amount to withdraw");
-					double withdraw=utility.nextDouble();
-					amount-=withdraw;
-					queue.dequeue();
-					System.out.println("Amount in Bank"+amount);
-					break;
-					
-				case 3:
-					queue.display();
-					break;
-					 
-				case 4:
-					System.exit(0);
-						
-			}
-		}while(ch!=9);
-*/
 	}
 
 }

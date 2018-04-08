@@ -1,7 +1,10 @@
+/**
+ * Purpose:To find roots of quadratic equation
+ * @author Vimlesh Kumar
+ * @since 11-03-2018
+ *
+ */
 package com.bridgelabz.functionalprograms;
-
-
-
 import com.bridgelabz.utility.Utility;
 
 public class Quadratic {

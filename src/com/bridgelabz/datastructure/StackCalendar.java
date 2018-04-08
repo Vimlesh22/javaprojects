@@ -1,6 +1,13 @@
+
+/**
+ * Purpose:To create pwn calendar using queue
+ * @author Vimlesh Kumar
+ * @since 21-03-2018
+ *
+ */
 package com.bridgelabz.datastructure;
 
-import com.bridgelabz.utility.Queue;
+
 import com.bridgelabz.utility.Stack;
 import com.bridgelabz.utility.Utility;
 
@@ -14,6 +21,7 @@ public class StackCalendar {
 		System.out.println("Enter Year:");
 		String year=utility.next();
 		//String[] daychar={"Sun","Mon","Tue","Wed","Thr","Fri","Sat"};
+		@SuppressWarnings("unchecked")
 		Stack<String>[] stack=new Stack[7];
 		for(int i=0;i<7;i++)
 		{

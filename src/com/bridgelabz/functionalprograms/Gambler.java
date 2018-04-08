@@ -1,3 +1,11 @@
+/**
+ * Purpose:To Find percentage of win or lose in a game
+ * @author Vimlesh Kumar
+ * @since 18-03-2018
+ *
+ */
+
+
 package com.bridgelabz.functionalprograms;
 
 
@@ -48,10 +56,10 @@ public class Gambler {
 		
 		System.out.println("Win: "+win+"\nlose:"+lose);
 		System.out.println("*******************************");
-		float winpercent=(win/(win+lose))*100;
-		float losepercent=(lose/(win+lose))*100;
-		System.out.println("Win  %  = "+winpercent);
-		System.out.println("Lose %  = "+losepercent);
+		float winPercentage=(win/(win+lose))*100;
+		float losePercentage=(lose/(win+lose))*100;
+		System.out.println("Win  %  = "+winPercentage);
+		System.out.println("Lose %  = "+losePercentage);
 	}
 		
 	public static void main(String[] args) {

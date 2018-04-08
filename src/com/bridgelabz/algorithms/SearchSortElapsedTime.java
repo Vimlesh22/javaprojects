@@ -40,10 +40,10 @@ public class SearchSortElapsedTime {
 						}
 						System.out.println("Enter No to be searchedin array:");
 						int number=utility.nextInt();
-						long timeelapsed1=System.nanoTime();
+						long timeElapsed1=System.nanoTime();
 						int position=binarySearchInteger(array, number);
-						long timeelapsed2=System.nanoTime();
-						long searchIntTime=(timeelapsed2-timeelapsed1);
+						long timeElapsed2=System.nanoTime();
+						long searchIntTime=(timeElapsed2-timeElapsed1);
 						if(position>0)
 						{
 							System.out.println("Element "+number+" found at position "+position);
@@ -62,10 +62,10 @@ public class SearchSortElapsedTime {
 						}
 						System.out.println("Enter No to be searchedin array:");
 						String word=utility.next();
-						long timeelapsed3=System.nanoTime();
+						long timeElapsed3=System.nanoTime();
 						int position1=binarySearchString(array1, word);
-						long timeelapsed4=System.nanoTime();
-						long searchStringTime=(timeelapsed4-timeelapsed3);
+						long timeElapsed4=System.nanoTime();
+						long searchStringTime=(timeElapsed4-timeElapsed3);
 						if(position1>0)
 						{
 							System.out.println("Element "+word+" found at position "+position1);
@@ -83,10 +83,10 @@ public class SearchSortElapsedTime {
 						{
 							array2[i]=utility.nextInt();
 						}
-						long timeelapsed5=System.nanoTime();
+						long timeElapsed5=System.nanoTime();
 						int[] sortedArray=insertionSortInteger(array2);
-						long timeelapsed6=System.nanoTime();
-						long sortIntegerTime=timeelapsed6-timeelapsed5;
+						long timeElapsed6=System.nanoTime();
+						long sortIntegerTime=timeElapsed6-timeElapsed5;
 						System.out.println("Sorted Array: ");
 						for(int i=0;i<sortedArray.length;i++)
 						{
@@ -104,10 +104,10 @@ public class SearchSortElapsedTime {
 						{
 							array3[i]=utility.next();
 						}
-						long timeelapsed7=System.nanoTime();
+						long timeElapsed7=System.nanoTime();
 						String[] sortedArrayString=insertSortSting(array3);
-						long timeelapsed8=System.nanoTime();
-						long sortStringTime=timeelapsed8-timeelapsed7;
+						long timeElapsed8=System.nanoTime();
+						long sortStringTime=timeElapsed8-timeElapsed7;
 						System.out.println("Sorted Array: ");
 						for(int i=0;i<sortedArrayString.length;i++)
 						{
@@ -124,10 +124,10 @@ public class SearchSortElapsedTime {
 					{
 						array4[i]=utility.nextInt();
 					}
-					long timeelapsed9=System.nanoTime();
+					long timeElapsed9=System.nanoTime();
 					int[] sortedArrayBubble=bubbleSortInteger(array4);
-					long timeelapsed10=System.nanoTime();
-					long sortBubbleStringTime=timeelapsed10-timeelapsed9;
+					long timeElapsed10=System.nanoTime();
+					long sortBubbleStringTime=timeElapsed10-timeElapsed9;
 					System.out.println("Sorted Array: ");
 					for(int i=0;i<sortedArrayBubble.length;i++)
 					{
@@ -146,10 +146,10 @@ public class SearchSortElapsedTime {
 					{
 						array5[i]=utility.next();
 					}
-					long timeelapsed11=System.nanoTime();
+					long timeElapsed11=System.nanoTime();
 					String[] sortedBubbleString=bubbleSortString(array5);
-					long timeelapsed12=System.nanoTime();
-					long sortedBubbleTime=timeelapsed12-timeelapsed11;
+					long timeElapsed12=System.nanoTime();
+					long sortedBubbleTime=timeElapsed12-timeElapsed11;
 					System.out.println("Sorted Array: ");
 					for(int i=0;i<sortedBubbleString.length;i++)
 					{

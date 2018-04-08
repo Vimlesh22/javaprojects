@@ -1,3 +1,9 @@
+/**
+ * Purpose:To create a console game to play tic-tac-toe
+ * @author Vimlesh Kumar
+ * @since 13-03-2018
+ *
+ */
 package com.bridgelabz.functionalprograms;
 import static com.bridgelabz.utility.Utility.ticTacToe;
 import static com.bridgelabz.utility.Utility.ticTacToeResult;

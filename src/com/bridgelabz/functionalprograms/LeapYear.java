@@ -1,3 +1,10 @@
+/**
+ * Purpose:To find leap year or not
+ * @author Vimlesh Kumar
+ * @since 18-03-2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 import static com.bridgelabz.utility.Utility.leapyear;
 import com.bridgelabz.utility.Utility;

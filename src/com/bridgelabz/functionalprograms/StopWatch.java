@@ -1,10 +1,17 @@
+/**
+ * Purpose:To create a stopwatch to find time betwwen an event
+ * @author Vimlesh Kumar
+ * @since 12-03-2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 
 import com.bridgelabz.utility.Utility;
 
 public class StopWatch {
-	static double timeelapse=0,second,second2;
-	public static void stopwatch()
+	static double timeElapsed=0,second,second2;
+	public static void stopWatch()
 	{
 		
 			Utility utility=new Utility();
@@ -20,7 +27,7 @@ public class StopWatch {
 				{
 					System.out.println("Stop watch stopped....");
 					second2 = System.currentTimeMillis();
-					timeelapse=second2-second;
+					timeElapsed=second2-second;
 					
 				}
 				
@@ -32,13 +39,13 @@ public class StopWatch {
 				System.out.println("else");
 				System.exit(0);
 			}
-			System.out.println("Time elapsed :"+timeelapse/60+"millisecond");
+			System.out.println("Time elapsed :"+timeElapsed/60+"millisecond");
 			
 		
 	}
 
 	public static void main(String[] args) {
-		stopwatch();
+		stopWatch();
 		
 	}
 

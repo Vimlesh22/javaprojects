@@ -11,9 +11,6 @@ import static com.bridgelabz.utility.Utility.*;
 
 import com.bridgelabz.utility.Utility;
 
-
-
-
 public class SwapNibble {
 	
 	public static void main(String[] args) {

@@ -1,35 +1,42 @@
+/**
+ * Purpose:To find prime factor of a number given by user
+ * @author Vimlesh Kumar
+ * @since 10-03-2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 
 import com.bridgelabz.utility.Utility;
 
 public class PrimeFactor {
-	public static void primefactor()
+	public static void primeFactor()
 	{
 			Utility utility=new Utility();
 			System.out.println("Enter Number to find the prime factors:");
-			int num=utility.nextInt();
-			while (num%2==0)
+			int number=utility.nextInt();
+			while (number%2==0)
 	        {
 	            System.out.print(2 + " ");
-	            num /= 2;
+	            number /= 2;
 	        }
-	        for (int i = 3; i <= Math.sqrt(num); i+= 2)
+	        for (int i = 3; i <= Math.sqrt(number); i+= 2)
 	        {
-	            while (num%i == 0)
+	            while (number%i == 0)
 	            {
 	                System.out.print(i + " ");
-	                num /= i;
+	                number /= i;
 	            }
 	        }
-	        if (num > 2)
+	        if (number > 2)
 	        {
-	            System.out.print(num);
+	            System.out.print(number);
 	        }
 		
 	}
 
 	public static void main(String[] args) {
-		primefactor();
+		primeFactor();
 
 	}
 

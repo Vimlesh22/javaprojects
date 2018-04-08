@@ -1,10 +1,15 @@
+/**
+ * Purpose:To print two dimensional array of prime number is the range specified by user
+ * @author Vimlesh Kumar
+ * @since 18-03-2018
+ *
+ */
+
 package com.bridgelabz.datastructure;
-
-
-
 import com.bridgelabz.utility.Utility;
 import static com.bridgelabz.utility.Utility.twoDPrimeNumber;
 import static com.bridgelabz.utility.Utility.removeNull;
+
 
 public class TwoDPrime
 {

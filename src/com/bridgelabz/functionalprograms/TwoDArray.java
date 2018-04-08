@@ -1,6 +1,15 @@
+/**
+ * Purpose:To create generic two dimensional array.
+ * @author Vimlesh Kumar
+ * @since 14-03-2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 
-import java.util.Scanner;
+
+
+import com.bridgelabz.utility.Utility;
 
 public class TwoDArray {
 	public static<E> void display(E[][] array,int row,int col)
@@ -19,12 +28,11 @@ public class TwoDArray {
 	}
 	
 
-	public static void twodarray()
+	public static void twoDArray()
 	{
 		int ch=0;
 		
-		try(Scanner sc=new Scanner(System.in);)
-		{
+		Utility utility=new Utility();
 			do
 			{
 				{
@@ -34,10 +42,10 @@ public class TwoDArray {
 							"\n3)Two2Array for double"+
 							"\n*****************************************");
 					System.out.println("Enter your choice");
-					ch=sc.nextInt();
+					ch=utility.nextInt();
 					System.out.println("Enter rows and column for array");
-					int row=sc.nextInt();
-					int col=sc.nextInt();
+					int row=utility.nextInt();
+					int col=utility.nextInt();
 					switch(ch)
 					{
 					case 1:
@@ -48,7 +56,7 @@ public class TwoDArray {
 						{
 							for(int j=0;j<col;j++)
 							{
-								array[i][j]=sc.nextInt();
+								array[i][j]=utility.nextInt();
 							}
 						}
 						display(array,row,col);
@@ -61,7 +69,7 @@ public class TwoDArray {
 						{
 							for(int j=0;j<col;j++)
 							{
-								array2[i][j]=sc.nextBoolean();
+								array2[i][j]=utility.nextBoolean();
 							}
 						}
 						display(array2,row,col);
@@ -75,7 +83,7 @@ public class TwoDArray {
 						{
 							for(int b=0;b<col;b++)
 							{
-								array1[a][b]=sc.nextDouble();
+								array1[a][b]=utility.nextDouble();
 							}
 						}
 						display(array1,row,col);
@@ -91,10 +99,10 @@ public class TwoDArray {
 
 		}
 
-	}
+	
 	
 	public static void main(String[] args) {
-		twodarray();
+		twoDArray();
 		
 	}
 }

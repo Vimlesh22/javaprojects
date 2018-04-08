@@ -15,12 +15,12 @@ public class Anagram {
 
 	public static void main(String[] args) 
 	{
-		Utility util=new Utility();
+		Utility utility=new Utility();
 		System.out.println("Enter a string");
-		String string1= util.nextLine();
-		string1=string1.replaceAll(" ","");
+		String string1= utility.nextLine();
+		string1=string1.replaceAll(" ",""); 
 		System.out.println("Enter a string to check anagram");
-		String string2=util.nextLine();
+		String string2=utility.nextLine();
 		string2=string2.replaceAll(" ","");
 
 		boolean result=anagram(string1,string2);

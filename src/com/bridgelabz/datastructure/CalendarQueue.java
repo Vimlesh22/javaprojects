@@ -1,7 +1,15 @@
+/**
+ * Purpose:To create a calendar using queue
+ * @author Vimlesh Kumar
+ * @since 14-03-2018
+ *
+ */
+
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.Utility;
+
 
 public class CalendarQueue {
 
@@ -12,6 +20,7 @@ public class CalendarQueue {
 		int month=utility.nextInt();
 		System.out.println("Enter Year:");
 		String year=utility.next();
+		@SuppressWarnings("unchecked")
 		Queue<String>[] queueCalendar=new Queue[7];
 		for(int i=0;i<7;i++)
 		{

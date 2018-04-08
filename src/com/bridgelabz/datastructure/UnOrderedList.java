@@ -1,3 +1,10 @@
+/**
+ * Purpose:To create a UnOrdered linked list without using collection library
+ * @author Vimlesh Kumar
+ * @since -03-2018
+ *
+ */
+
 package com.bridgelabz.datastructure;
 import static com.bridgelabz.utility.Utility.readFromFile;
 import static com.bridgelabz.utility.Utility.writeToFile;
@@ -14,11 +21,11 @@ public class UnOrderedList {
 		Utility utility=new Utility();
 		LinkedList<String> list=new LinkedList<String>();
 		String path="/home/bridgeit/project/File/UnorderedList.txt";
-			String str[] = readFromFile(path);
+			String readString[] = readFromFile(path);
 			
-			for(int i=0;i<str.length;i++)
+			for(int i=0;i<readString.length;i++)
 			{
-				list.addAtEnd(str[i]);
+				list.addAtEnd(readString[i]);
 			}
 			list.printList();
 			System.out.println("");
@@ -35,10 +42,10 @@ public class UnOrderedList {
 			}
 			String string=list.toString();
 			writeToFile(path,string);
-			str=readFromFile(path);
-			for(int i=0;i<str.length;i++)
+			readString=readFromFile(path);
+			for(int i=0;i<readString.length;i++)
 			{
-				System.out.print(str[i]+" ");
+				System.out.print(readString[i]+" ");
 			}
 			
 			

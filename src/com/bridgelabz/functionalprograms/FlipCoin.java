@@ -32,9 +32,9 @@ public class FlipCoin {
 					}
 					
 				}
-				float headpercent=(head/(head+tail))*100;
-				float tailpercent=(tail/(head+tail))*100;
-				System.out.println("head:"+Math.round(headpercent)+"%"+"\ntail:"+Math.round(tailpercent)+"%");
+				float headPercentage=(head/(head+tail))*100;
+				float tailPercentage=(tail/(head+tail))*100;
+				System.out.println("head:"+Math.round(headPercentage)+"%"+"\ntail:"+Math.round(tailPercentage)+"%");
 			}
 			else
 			{

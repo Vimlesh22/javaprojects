@@ -1,3 +1,10 @@
+/**
+ * Purpose:To find power of Two
+ * @author Vimlesh Kumar
+ * @since 23-03-2018
+ *
+ */
+
 package com.bridgelabz.functionalprograms;
 import com.bridgelabz.utility.Utility;
 
@@ -6,14 +13,14 @@ public class Power {
 	{
 			Utility utility=new Utility();
 			System.out.println("Enter Number:");
-			int num=utility.nextInt();
+			int number=utility.nextInt();
 			
-	        if(num>=0 && num<31)
+	        if(number>=0 && number<31)
 	        {
-	        	System.out.println("Power of 2^"+num+" is: "+(Math.pow(2, num)));
+	        	System.out.println("Power of 2^"+number+" is: "+(Math.pow(2, number)));
 	            System.out.println();
-	            System.out.println("Printing all till Power Value "+num);
-		        for(int i=1;i<=num;i++)
+	            System.out.println("Printing all till Power Value "+number);
+		        for(int i=1;i<=number;i++)
 		        {
 		        	
 		         	System.out.println("Power of 2^"+i+" is: "+(Math.pow(2, i)));	

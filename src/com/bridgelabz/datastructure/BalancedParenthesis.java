@@ -1,9 +1,15 @@
 
-
+/**
+ * Purpose:To find if the given expression is balanced or not
+ * @author Vimlesh Kumar
+ * @since 10-03-2018
+ */
 package com.bridgelabz.datastructure;
 
 import com.bridgelabz.utility.Utility;
 import com.bridgelabz.utility.Stack;
+
+
 
 
 public class BalancedParenthesis {

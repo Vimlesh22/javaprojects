@@ -1,7 +1,14 @@
+/**
+ * Purpose:To find
+ * @author Vimlesh Kumar
+ * @since 14-03-2018
+ *
+ */
 package com.bridgelabz.datastructure;
 import com.bridgelabz.utility.Utility;
 import static com.bridgelabz.utility.Utility.readFromFile;
 import static com.bridgelabz.utility.Utility.writeToFile;
+
 
 public class HashingSearchNumber {
 
@@ -9,18 +16,18 @@ public class HashingSearchNumber {
 		
 		String path="/home/bridgeit/project/File/hashing.txt";
 		String[] number=readFromFile(path);	
-		String retrieve1=Utility.hashing(number);	
-		String[] splitstring=retrieve1.split(" ");
-		int integerarray[]=new int[splitstring.length];
-		for(int i=0;i<splitstring.length;i++)
+		String retrieve=Utility.hashing(number);	
+		String[] stringSplit=retrieve.split(" ");
+		int integerArray[]=new int[stringSplit.length];
+		for(int i=0;i<stringSplit.length;i++)
 		{
-			integerarray[i]=Integer.parseInt(splitstring[i]);
+			integerArray[i]=Integer.parseInt(stringSplit[i]);
 		}
-		int[] retrieveintarray=Utility.bubbleSortInteger(integerarray);
+		int[] retrieveIntArray=Utility.bubbleSortInteger(integerArray);
 		String string="";
-		for(int i=0;i<retrieveintarray.length;i++)
+		for(int i=0;i<retrieveIntArray.length;i++)
 		{
-			string+=retrieveintarray[i]+" ";
+			string+=retrieveIntArray[i]+" ";
 		}
 		System.out.println(string);
 		

@@ -13,23 +13,23 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.bridgelabz.utility.Utility;
 
 public class CouponNumber {
-	public static void couponnumber()
+	public static void couponNumber()
 	{
 		Utility utility=new Utility();
 		
 			System.out.println("Enter a Number");
-			int num=utility.nextInt();
+			int number=utility.nextInt();
 			ArrayList<Integer> coupon=new ArrayList<>();
 			int counter=0;
-			while(coupon.size()!=num){
+			while(coupon.size()!=number){
 			
-			int randomNumber=ThreadLocalRandom.current().nextInt(0, num);
+			int randomNumber=ThreadLocalRandom.current().nextInt(0, number);
 			if(coupon.contains(randomNumber)){
 				counter++;
 			}
 			else{
 				counter++;
-				coupon.add(num);
+				coupon.add(number);
 			}
 			
 			System.out.println("No of iteration to find distinct coupons:"+counter);
@@ -37,6 +37,6 @@ public class CouponNumber {
 	}
 
 	public static void main(String[] args) {
-		couponnumber();
+		couponNumber();
 }
 }

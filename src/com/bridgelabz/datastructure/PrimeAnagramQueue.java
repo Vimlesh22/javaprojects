@@ -1,9 +1,17 @@
+/**
+ * Purpose:To find prime anagram using queue
+ * @author Vimlesh Kumar
+ * @since 21-03-2018
+ *
+ */
+
 package com.bridgelabz.datastructure;
 
 import static com.bridgelabz.utility.Utility.primeAnagram;
 
 import com.bridgelabz.utility.Queue;
 import com.bridgelabz.utility.Utility;
+
 
 public class PrimeAnagramQueue {
 

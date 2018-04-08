@@ -16,12 +16,12 @@ import java.io.FileNotFoundException;
 public class WordFromWordList {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Utility util=new Utility();
+		Utility utility=new Utility();
 		System.out.println("Enter File Location");
-		String filelocation=util.nextLine();
+		String filelocation=utility.nextLine();
 		
 				System.out.println("Enter a word to find in WordList");
-				String word=util.next();
+				String word=utility.next();
 				String[] stringsplit=readFromFile(filelocation);
 				int index=binarySearchString(stringsplit, word);
 				if(index>0)

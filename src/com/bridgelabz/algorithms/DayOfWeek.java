@@ -12,14 +12,14 @@ public class DayOfWeek {
 
 	public static void main(String[] args) {
 			
-		Utility util=new Utility();
+		Utility utility=new Utility();
 		System.out.println("Enter year,month and day");
-		int year=util.nextInt();
-		int month=util.nextInt();
-		int day=util.nextInt();
-		int day1=dayOfWeek(year,month,day);
-		String arr[]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-		System.out.println("Day on "+day+"/"+month+"/"+year+" is "+arr[day1]);
+		int year=utility.nextInt();
+		int month=utility.nextInt();
+		int day=utility.nextInt();
+		int dayOfWeek=dayOfWeek(year,month,day);
+		String weekDay[]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+		System.out.println("Day on "+day+"/"+month+"/"+year+" is "+weekDay[dayOfWeek]);
 	}
 
 }

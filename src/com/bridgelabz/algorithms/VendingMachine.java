@@ -17,9 +17,9 @@ public class VendingMachine{
 	
 	
 	public static void main(String args[]){
-		Utility util=new Utility();
+		Utility utility=new Utility();
 		System.out.println("Enter the Amnount:");
-		float amount=util.nextFloat();
+		float amount=utility.nextFloat();
 		if(amount<1)
 		{
 			System.out.println("Amount should be greater than zero!!!!");

@@ -9,12 +9,6 @@ package com.bridgelabz.utility;
 
 
 
-import static com.bridgelabz.utility.Utility.anagram;
-import static com.bridgelabz.utility.Utility.binarySearchInteger;
-import static com.bridgelabz.utility.Utility.binarySearchString;
-import static com.bridgelabz.utility.Utility.palindromePrime;
-import static com.bridgelabz.utility.Utility.primeNumber;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -54,6 +48,14 @@ public class Utility {
 	public Utility()
 	{
 		sc=new Scanner(System.in);
+	}
+	
+	/**
+	  * Method to take Boolean as input.  
+	  */
+	public Boolean nextBoolean() {
+		
+		return sc.nextBoolean();
 	}
 	/**
 	  * Method to take String as input.  
@@ -148,12 +150,12 @@ public class Utility {
 	}
 	/**
 	  * purpose:Method to take Calculate SquareRoot using Newton method.
-	  * @param num the number to check square root 
+	  * @param number the number to check square root 
 	  * @return returns square root of a number 
 	  */
-	public static double squareRoot(double num)
+	public static double squareRoot(double number)
 	{
-		double t=num;
+		double t=number;
 		double div;
 		double epsilon=(Math.pow(10,-15));
 		/**
@@ -163,8 +165,8 @@ public class Utility {
 		 */
 		do
 		{
-			t= ((num/t)+t)/2;
-			div=Math.abs(t-(num/t));
+			t= ((number/t)+t)/2;
+			div=Math.abs(t-(number/t));
 		}
 		while(div>epsilon*t);
 		return t;
@@ -240,7 +242,8 @@ public class Utility {
 		if(amount == 0)
 			return;
 	
-		//calculate 1000 rupees notes
+
+
 		if(amount>=1000){
 			mNote+=((int)amount/1000);
 			System.out.println("1000 Rupes Notes is: "+((int)amount/1000));
@@ -567,21 +570,21 @@ public class Utility {
 
 	/**
 	 * purpose:Finds Binary representation of number provided as input
-	 * @param no number for finding binary
+	 * @param number number for finding binary
 	 * @return integer array for binary representation of decimal number
 	 */
-	public static String toBinary(int no)
+	public static String toBinary(int number)
 	{
 		String string="";
 		
 		int array[]=new int[50];
 		int i=0;
-	    while (no > 0)
+	    while (number > 0)
 	    {
 	    	
-	        array[i] = no%2;
+	        array[i] = number%2;
 	        i++;
-	        no = no/2;
+	        number = number/2;
 	    }
 	    System.out.println("Binary Represented of Number is:");
 	    for (int j = i ; j >= 0 ; j--){
@@ -594,9 +597,10 @@ public class Utility {
 	}
 	
 	/**
-	 * @param str
+	 * purpose:To swap nibble of given string
+	 * @param string string to swap nibble
 	 */
-	public static void swapNibble(String str)
+	public static void swapNibble(String string)
 	{
 		//Swapping Nibble and printing decimal value
 		String str2="";
@@ -604,11 +608,11 @@ public class Utility {
 		String str4="";
 		for(int i=0;i<=3;i++)
 		{
-			str2=str2+str.charAt(i);
+			str2=str2+string.charAt(i);
 		}
-		for(int i=4;i<str.length();i++)
+		for(int i=4;i<string.length();i++)
 		{
-			str3=str3+str.charAt(i);
+			str3=str3+string.charAt(i);
 		}
 		str4=str3+str2;
 		
@@ -679,26 +683,26 @@ public class Utility {
 
 	/**
 	 * purpose:this method sorts the integer array using bubble sort
-	 * @param arr stores value of integer in array
+	 * @param array stores value of integer in array
 	 * @return sorted integer array
 	 */
-	public static int[]  bubbleSortInteger(int arr[])
+	public static int[]  bubbleSortInteger(int array[])
 
 	{
-		for(int i=0;i<arr.length-1;i++)
+		for(int i=0;i<array.length-1;i++)
 		{
-			for(int j=i;j<arr.length;j++)
+			for(int j=i;j<array.length;j++)
 			{
-				if(arr[i]>arr[j])
+				if(array[i]>array[j])
 				{
-					int temp=arr[i];
-					arr[i]=arr[j];
-					arr[j]=temp;
+					int temp=array[i];
+					array[i]=array[j];
+					array[j]=temp;
 					
 				}
 			}
 		}
-		return arr;
+		return array;
 	}
 	
 
@@ -727,26 +731,26 @@ public class Utility {
 	
 	/**
 	 * purpose:this method sorts the integer array
-	 * @param arr stores value of integer in array
+	 * @param unSortedArray stores value of integer in array
 	 * @return sorted integer array
 	 */
-	public static int[] insertionSortInteger(int arr[])
+	public static int[] insertionSortInteger(int unSortedArray[])
 
 	{
-		int n = arr.length;
+		int n = unSortedArray.length;
         for (int i=1; i<n; ++i)
         {
-            int key = arr[i];
+            int key = unSortedArray[i];
             int j = i-1;
              
-            while (j>=0 && arr[j] > key)
+            while (j>=0 && unSortedArray[j] > key)
             {
-                arr[j+1] = arr[j];
+                unSortedArray[j+1] = unSortedArray[j];
                 j = j-1;
             }
-            arr[j+1] = key;
+            unSortedArray[j+1] = key;
         }
-		return arr;
+		return unSortedArray;
 	}
 	
 	/**
@@ -806,6 +810,95 @@ public class Utility {
 		return -1;
 	}
 	
+	
+	
+	 // Merges two subarrays of arr[].
+    // First subarray is arr[l..m]
+    // Second subarray is arr[m+1..r]
+    public static void merge(int arrayForSort[], int first, int middle, int last)
+    {
+        // Find sizes of two subarrays to be merged
+        int n1 = middle - first + 1;
+        int n2 = last - middle;
+ 
+        /* Create temp arrays */
+        int leftArray[] = new int [n1];
+        int rightArray[] = new int [n2];
+ 
+        /*Copy data to temp arrays*/
+        for (int i=0; i<n1; ++i)
+            leftArray[i] = arrayForSort[first + i];
+        for (int j=0; j<n2; ++j)
+            rightArray[j] = arrayForSort[middle + 1+ j];
+ 
+ 
+        /* Merge the temp arrays */
+ 
+        // Initial indexes of first and second subarrays
+        int i = 0, j = 0;
+ 
+        // Initial index of merged subarry array
+        int k = first;
+        while (i < n1 && j < n2)
+        {
+            if (leftArray[i] <= rightArray[j])
+            {
+                arrayForSort[k] = leftArray[i];
+                i++;
+            }
+            else
+            {
+                arrayForSort[k] = rightArray[j];
+                j++;
+            }
+            k++;
+        }
+ 
+        /* Copy remaining elements of L[] if any */
+        while (i < n1)
+        {
+            arrayForSort[k] = leftArray[i];
+            i++;
+            k++;
+        }
+ 
+        /* Copy remaining elements of R[] if any */
+        while (j < n2)
+        {
+            arrayForSort[k] = rightArray[j];
+            j++;
+            k++;
+        }
+    }
+ 
+    // Main function that sorts arr[l..r] using
+    // merge()
+    public static void sort(int array[], int first, int last)
+    {
+        if (first < last)
+        {
+            // Find the middle point
+            int m = (first+last)/2;
+ 
+            // Sort first and second halves
+            sort(array, first, m);
+            sort(array , m+1, last);
+ 
+            // Merge the sorted halves
+            merge(array, first, m, last);
+        }
+    }
+ 
+    /* A utility function to print array of size n */
+    public static void printArray(int arr[])
+    {
+        int n = arr.length;
+        for (int i=0; i<n; ++i)
+            System.out.print(arr[i] + " ");
+        System.out.println();
+    }
+ 
+	
 	/**
 	 * purpose:Searches a string in an array using binary search method
 	 * @param strr stores array of strings
@@ -851,6 +944,11 @@ public class Utility {
 	}
 	
 	
+	/**
+	 * Purpose:To find given year is a leap year or not
+	 * @param year of which leap year is to be found out
+	 * @returns true if leap year else returns false
+	 */
 	public static boolean leapyear(String year)
 	{
 		
@@ -898,24 +996,29 @@ public class Utility {
 		
 	}
 	
+	/**
+	 * purpose:Reads file from the specified location
+	 * @param filelocation path from which data is to be read
+	 * @return returns array of string
+	 */
 	public static String[] readFromFile(String filelocation) 
 	{
 		
 		
 		
 				int i;
-				String str="";
-				String[] stringsplit = null;
+				String string="";
+				String[] spiltString = null;
 				try 
 				{
 					File file=new File(filelocation);
 					BufferedReader br=new BufferedReader(new FileReader(file));
 					while ((i=br.read()) != -1)
 					{
-						str=str+(char)i;
+						string=string+(char)i;
 					}
 					
-					stringsplit=str.split(" ");
+					spiltString=string.split(" ");
 					
 					br.close();
 					
@@ -923,22 +1026,28 @@ public class Utility {
 				{
 					e.printStackTrace();
 				}
-				return stringsplit;
+				return spiltString;
 	}
 	 
 
-	public String[][] calendar(int mon,String yr)
+	/**
+	 * Purpose:To create a calendar  of month and year given by user
+	 * @param month month input given by user 
+	 * @param year year input given by user
+	 * @return returns twoDArray of string
+	 */
+	public String[][] calendar(int month,String year)
 	{
 		String[][] calendar=new String[7][7];
 		String[] daychar={"Sun","Mon","Tue","Wed","Thr","Fri","Sat"};
 		int leapdays[]={31,29,31,30,31,30,31,31,30,31,30,31};
 		int days[]={31,28,31,30,31,30,31,31,30,31,30,31};
-		boolean y=leapyear(yr);
+		boolean y=leapyear(year);
 		
 		if(y==true)
 		{
 			
-				int day=dayOfWeek(Integer.parseInt(yr),mon,1);
+				int day=dayOfWeek(Integer.parseInt(year),month,1);
 				for(int i=0;i<7;i++)
 				{
 					if(i==0)
@@ -960,7 +1069,7 @@ public class Utility {
 				{
 					for(int j=0;j<7;j++)
 					{
-						if(NUM==leapdays[mon-1])
+						if(NUM==leapdays[month-1])
 						{
 							break;
 						}
@@ -974,7 +1083,7 @@ public class Utility {
 		
 		else
 		{
-			int day=dayOfWeek(Integer.parseInt(yr),mon,1);
+			int day=dayOfWeek(Integer.parseInt(year),month,1);
 			for(int i=0;i<7;i++)
 			{
 				if(i==0)
@@ -996,7 +1105,7 @@ public class Utility {
 			{
 				for(int j=0;j<7;j++)
 				{
-					if(NUM==days[mon-1])
+					if(NUM==days[month-1])
 					{
 						break;
 					}
@@ -1509,23 +1618,28 @@ public class Utility {
 		
 	}
 	
-	public static boolean primeChecker(String str)
+	/**
+	 * Purpose:to check given numbers are prime or not
+	 * @param string of numbers 
+	 * @return true if prime else returns false
+	 */
+	public static boolean primeChecker(String string)
 	{
-		DeQueue<Character> dequeue=new DeQueue<Character>(str.length());
-		DeQueue<Character> dequeue1=new DeQueue<Character>(str.length());
-		String str1="";
-		String str2="";
-		for(int i=0;i<str.length();i++)
+		DeQueue<Character> dequeue=new DeQueue<Character>(string.length());
+		DeQueue<Character> dequeue1=new DeQueue<Character>(string.length());
+		String string1="";
+		String string2="";
+		for(int i=0;i<string.length();i++)
 		{
-			dequeue.addAtEnd(str.charAt(i));
+			dequeue.addAtEnd(string.charAt(i));
 		}
-		str1=dequeue.toString();
-		for(int i=0;i<str.length();i++)
+		string1=dequeue.toString();
+		for(int i=0;i<string.length();i++)
 		{
-			dequeue1.addAtBegin(str.charAt(i));
+			dequeue1.addAtBegin(string.charAt(i));
 		}
-		str2=dequeue1.toString();
-		if(str1.equals(str2))
+		string2=dequeue1.toString();
+		if(string1.equals(string2))
 		{
 			return true;
 		}
@@ -1536,6 +1650,11 @@ public class Utility {
 	}
 	
 	
+	/**
+	 * Purpose:To check if the given array of string is prime and palindrome
+	 * @param primeArray string of array containing numbers 
+	 * @return object array of prime palindrome number
+	 */
 	public static Object[] palindromePrime(String[] primeArray)
 	{
 		List<String> palindromePrime1=new ArrayList<String>();
@@ -1559,6 +1678,11 @@ public class Utility {
 		return palindromePrime1.toArray();
 		
 	}
+	/**
+	 * purpose:To find primeand anagram of numbers
+	 * @param range specifies the range in which prime anagram is to be found out.
+	 * @return string array of prime and anagram number
+	 */
 	public static String[] primeAnagram(int range)
 	{
 		//get string of prime number and convert string into string array
@@ -1573,13 +1697,6 @@ public class Utility {
 			primePalindrome[i]=(String)primePalindromeObject[i];
 			
 		}
-		/*System.out.println("Prime Palindrome:");
-		for(int i=0;i<primePalindrome.length;i++)
-		{
-			System.out.print(primePalindrome[i]+" ");;
-			
-		}
-		System.out.println("");*/
 		
 		//prime anagram logic and displaying list of prime anagram numbers
 		boolean result;
@@ -1607,15 +1724,15 @@ public class Utility {
 			primeAnagramString[k]=iterator.next();
 			k++;
 		}
-		/*for(int i=0;i<primeAnagramString.length;i++)
-		{
-			System.out.print(primeAnagramString[i]+" ");
-		}
-		System.out.println("");*/
+		
 		return primeAnagramString;
 		
 	}
 	
+	/**
+	 * Purpose: To find out numbers which are prime,anagram as well as palindrome in given range.
+	 * @param range in which prime anagram palindrome is to be found out.
+	 */
 	public static void primeAnagramPalindrome(int range)
 	{
 				//get string of prime number and convert string into string array
@@ -1702,22 +1819,22 @@ public class Utility {
 	
 	
 	/**
-	  * permutation function
-	  * @param str string to calculate permutation for
-	  * @param l starting index
-	  * @param r end index
+	  * To find permutation of a string 
+	  * @param string string to calculate permutation for
+	  * @param startIndex starting index of string
+	  * @param endIndex end index of string
 	  */
-	 public static void permute(String str, int l, int r)
+	 public static void permute(String string, int startIndex, int endIndex)
 	 {
-	     if (l == r)
-	         System.out.println(str);
+	     if (startIndex == endIndex)
+	         System.out.println(string);
 	     else
 	     {
-	         for (int i = l; i <= r; i++)
+	         for (int i = startIndex; i <= endIndex; i++)
 	         {
-	             str = swap(str,l,i);
-	             permute(str, l+1, r);
-	             str = swap(str,l,i);
+	             string = swap(string,startIndex,i);
+	             permute(string, startIndex+1, endIndex);
+	             string = swap(string,startIndex,i);
 	         }
 	     }
 	 }
@@ -1936,6 +2053,11 @@ public class Utility {
 		return gameDraw;
 }
 	
+	/**
+	 * purpose:To play tic tac toe game
+	 * @param array of character passing board to the function
+	 * @return two dimensional array of characters
+	 */
 	public static char[][] ticTacToe(char[][] array)
 	{
 		Utility utility=new Utility();
@@ -2206,6 +2328,7 @@ public class Utility {
 		}
 		return array;
 	}
+	
 
 
 	

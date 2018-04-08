@@ -1,3 +1,11 @@
+/**
+ * Purpose:To find the triplet if in array any three number adds upto zero
+ * @author Vimlesh Kumar
+ * @since 18-03-2018
+ *
+ */
+
+
 package com.bridgelabz.functionalprograms;
 
 
@@ -9,14 +17,14 @@ public class SumAddsToZero {
 	{
 			Utility utility=new Utility();
 			System.out.println("Enter how many elements you want:");
-			int num=utility.nextInt();
-			int arr[]=new int[num];
+			int number=utility.nextInt();
+			int array[]=new int[number];
 			System.out.println("Enter elements:");
-			for(int i=0;i<num;i++)
+			for(int i=0;i<number;i++)
 			{
-				arr[i]=utility.nextInt();
+				array[i]=utility.nextInt();
 			}
-			sumzero(arr);
+			sumzero(array);
 		
 	}
 	public static void sumzero(int array[])
