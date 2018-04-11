@@ -6,22 +6,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 
-import org.codehaus.jackson.JsonGenerationException;
+
+
+
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
+
 
 import com.bridgelabz.utility.Utility;
 
-public class Clinique {
+public class Clinique implements CliniqueInterface{
 	int id;
 	String doctorName,availability,patientName,doctorSpecialization;
 	ObjectMapper objectMapper=new ObjectMapper();
@@ -39,19 +39,34 @@ public class Clinique {
 	String patientPath="/home/bridgeit/project/CliniqueFiles/Patient.txt";
 	File patientFile=new File(patientPath);
 	
-	public void readFile() throws JsonParseException, JsonMappingException, IOException
+	@Override
+	public void readFile() 
 	{
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
-		patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		
 	}
 	
 	
-	
-	public void addDoctor() throws JsonParseException, JsonMappingException, IOException
+	@Override
+	public void addDoctor()
 	{
 		objectMapper=new ObjectMapper();
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		System.out.println("Enter Doctor ID");
 		id=utility.nextInt();
 		System.out.println("Enter Doctor Name:");
@@ -65,18 +80,28 @@ public class Clinique {
 		System.out.println("Doctor Added SuccessFully!!!");
 		
 	}
-	
-	public void writeDoctor() throws JsonGenerationException, JsonMappingException, IOException
+	@Override
+	public void writeDoctor() 
 	{
 		objectMapper=new ObjectMapper();
-		objectMapper.writerWithDefaultPrettyPrinter().writeValue(doctorFile, doctorList);
+		try {
+			objectMapper.writerWithDefaultPrettyPrinter().writeValue(doctorFile, doctorList);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 	}
 	
-	
-	public void addPatient() throws JsonParseException, JsonMappingException, IOException
+	@Override
+	public void addPatient() 
 	{
 		objectMapper=new ObjectMapper();
-		patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		try {
+			patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		System.out.println("Enter Patient ID");
 		id=utility.nextInt();
 		System.out.println("Enter Patient Name:");
@@ -90,14 +115,19 @@ public class Clinique {
 		System.out.println("Patient Added SuccessFully!!!");
 		
 	}
-	
-	public void writePatient() throws JsonGenerationException, JsonMappingException, IOException
+	@Override
+	public void writePatient() 
 	{
 		objectMapper=new ObjectMapper();
-		objectMapper.writerWithDefaultPrettyPrinter().writeValue(patientFile, patientList);
+		try {
+			objectMapper.writerWithDefaultPrettyPrinter().writeValue(patientFile, patientList);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 	}
-	
-	public void displayDoctor() throws JsonParseException, JsonMappingException, IOException
+	@Override
+	public void displayDoctor()
 	{
 		objectMapper=new ObjectMapper();
 		Iterator<Doctor> iterator=doctorList.iterator();
@@ -109,8 +139,8 @@ public class Clinique {
 				
 		
 	}
-	
-	public void displayPatient() throws JsonParseException, JsonMappingException, IOException
+	@Override
+	public void displayPatient() 
 	{
 		objectMapper=new ObjectMapper();
 		Iterator<Patient> iterator=patientList.iterator();
@@ -121,12 +151,17 @@ public class Clinique {
 		}
 		
 	}
-
-	public Doctor searchDoctorById(int id) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public Doctor searchDoctorById(int id)  {
 		
 		objectMapper=new ObjectMapper();
 		Doctor result;
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Doctor> iterator=doctorList.iterator();
 		while(iterator.hasNext())
 		{
@@ -144,12 +179,17 @@ public class Clinique {
 	}
 
 	
-
-	public Doctor searchDoctorByName(String name) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public Doctor searchDoctorByName(String name)  {
 		
 		objectMapper=new ObjectMapper();
 		Doctor result;
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Doctor> iterator=doctorList.iterator();
 		while(iterator.hasNext())
 		{
@@ -163,11 +203,16 @@ public class Clinique {
 		return null;
 		
 	}
-
-	public List<Doctor> searchDoctorBySpecialization(String specialization) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public List<Doctor> searchDoctorBySpecialization(String specialization)  {
 		objectMapper=new ObjectMapper();
 		List<Doctor> result=new ArrayList<>();
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Doctor> iterator=doctorList.iterator();
 		while(iterator.hasNext())
 		{
@@ -180,11 +225,16 @@ public class Clinique {
 		return result;
 		
 	}
-
-	public List<Doctor> searchDoctorByAvailability(String availability) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public List<Doctor> searchDoctorByAvailability(String availability)  {
 		objectMapper=new ObjectMapper();
 		List<Doctor> result=new ArrayList<>();
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Doctor> iterator=doctorList.iterator();
 		while(iterator.hasNext())
 		{
@@ -196,12 +246,17 @@ public class Clinique {
 		}
 		return result;
 	}
-
-	public Patient searchPatientByName(String patientName2) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public Patient searchPatientByName(String patientName2)   {
 		
 		objectMapper=new ObjectMapper();
 		Patient result;
-		patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		try {
+			patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Patient> iterator=patientList.iterator();
 		while(iterator.hasNext())
 		{
@@ -214,11 +269,16 @@ public class Clinique {
 		}
 		return null;
 	}
-
-	public Patient searchPatientById(int patientId) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public Patient searchPatientById(int patientId)  {
 		objectMapper=new ObjectMapper();
 		Patient result;
-		patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		try {
+			patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Patient> iterator=patientList.iterator();
 		while(iterator.hasNext())
 		{
@@ -231,11 +291,16 @@ public class Clinique {
 		}
 		return null;
 	}
-
-	public Patient searchPatientByPhoneNo(long phoneNo) throws JsonParseException, JsonMappingException, IOException {
+	@Override
+	public Patient searchPatientByPhoneNo(long phoneNo)  {
 		objectMapper=new ObjectMapper();
 		Patient result;
-		patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		try {
+			patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 		Iterator<Patient> iterator=patientList.iterator();
 		while(iterator.hasNext())
 		{
@@ -248,16 +313,31 @@ public class Clinique {
 		}
 		return null;
 	}
-
-	public void takeAppointment(String doctorName2, String patientName1) throws JsonParseException, JsonMappingException, IOException 
+	@Override
+	@SuppressWarnings("unchecked")
+	public void takeAppointment(String doctorName2, String patientName1)   
 	{
-		patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
-		doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
-		appointmentList = objectMapper.readValue(appointmentFile, TreeMap.class);
+		try {
+			patientList=new ArrayList<Patient>(Arrays.asList(objectMapper.readValue(patientFile,Patient[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		try {
+			doctorList=new ArrayList<Doctor>(Arrays.asList(objectMapper.readValue(doctorFile,Doctor[].class)));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		try {
+			appointmentList = objectMapper.readValue(appointmentFile, HashMap.class);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
 //		appointmentList=new HashMap<>();
 		Iterator<Patient> patientIterator=patientList.iterator();
 		Iterator<Doctor> doctorIterator=doctorList.iterator();
-		Set<Patient> addPatient=new HashSet<>();
 //		List<Patient> listOfPatient=new ArrayList<>();
 		List<Patient> listOfPatient;
 		while(patientIterator.hasNext())
@@ -286,9 +366,19 @@ public class Clinique {
 							appointmentList.put(doctorName2, listOfPatient);
 							}
 							ObjectMapper mapper=new ObjectMapper();
-							mapper.writerWithDefaultPrettyPrinter().writeValue(appointmentFile, appointmentList);
+							try {
+								mapper.writerWithDefaultPrettyPrinter().writeValue(appointmentFile, appointmentList);
+							} catch (IOException e) {
+								
+								e.printStackTrace();
+							}
 							doctor.setNoOfPatients(doctor.getNoOfPatients()+1);
-							objectMapper.writerWithDefaultPrettyPrinter().writeValue(doctorFile, doctorList);
+							try {
+								objectMapper.writerWithDefaultPrettyPrinter().writeValue(doctorFile, doctorList);
+							} catch (IOException e) {
+								
+								e.printStackTrace();
+							}
 							
 						}
 					}
@@ -298,7 +388,7 @@ public class Clinique {
 	
 	}
 	
-	
+	@Override
 	public void popularDoctor()
 	{
 		int[] noOfPatient=new int[doctorList.size()];
@@ -307,7 +397,7 @@ public class Clinique {
 		while(iterator.hasNext())
 		{
 			Doctor doctor=iterator.next();
-			noOfPatient[count]=doctor.getNoOfPatients()		;
+			noOfPatient[count]=doctor.getNoOfPatients();
 			count++;
 		}
 	}
