@@ -932,7 +932,7 @@ public class Utility {
 		return -1;
 	}
 	
-	public static int[] mergeSort(int arr[],int p,int r)
+	public static void mergeSort(int arr[],int p,int r)
 	{
 		int q=0;
 		if(p<r)
@@ -940,7 +940,7 @@ public class Utility {
 			q=(p+r)/2;
 			mergeSort(arr,p,q);
 		}
-		return arr;
+		
 	}
 	
 	
@@ -1226,7 +1226,10 @@ public class Utility {
 		{
 			try 
 			{
-				filereader.close();
+				if(filereader!=null)
+				{
+					filereader.close();
+				}
 			} 
 			catch (IOException e) 
 			{
@@ -1266,7 +1269,10 @@ public class Utility {
 			json.put("Wheat", wheat);
 			json.put("Pulses", pulses);
 			
-			String writefile="/home/bridgeit/project/File/UpdatedInvertoryDetails.json";
+			//String writefile="/home/bridgeit/project/File/UpdatedInvertoryDetails.json";
+			System.out.println("Enter File Path:");
+			Utility utility=new Utility();
+			String writefile=utility.next();
 			fileWriter=new FileWriter(writefile);
 			
 			fileWriter.write(json.toJSONString());
@@ -1283,8 +1289,16 @@ public class Utility {
 		{
 			try 
 			{
-				fileReader.close();
-				fileWriter.close();
+				if(fileReader!=null)
+				{
+					fileReader.close();
+				}
+				if(fileWriter!=null)
+				{
+					
+						fileWriter.close();
+				
+				}
 			} 
 			catch (IOException e)
 			{
@@ -1331,24 +1345,16 @@ public class Utility {
 			
 		}
 		
-		/*int arr[]=new int[jsonArray.size()];
-		for(int i=0;i<jsonArray.size();i++)
-		{
-			JSONObject obj=(JSONObject)jsonArray.get(i);
-			arr[i]=(int) obj.get("Total");
-		}
-		int total1=0;
-		for(int i=0;i<arr.length;i++)
-		{
-			total1+=arr[i];
-		}*/
+	
 			
 		
 		
 		stockReport=new JSONObject();
 		stockReport.put("StockReport", jsonArray);
 		stockReport.put("Total Share Value", totalvalue);
-		file="/home/bridgeit/project/File/Stockreport.json";
+		//file="/home/bridgeit/project/File/Stockreport.json";
+		System.out.println("Enter file Path:");
+		file=utility.next();
 		try 
 		{
 			fileWriter=new FileWriter(file);
@@ -1397,11 +1403,7 @@ public class Utility {
 			{
 				System.out.println("Please Try Again!!!!!");
 			}
-		}while(!matcher2.matches());
-		
-		
-
-		
+		}while(!matcher2.matches());	
 		Pattern pattern3=Pattern.compile(contactvalidate);
 		Matcher matcher3=null;
 		do
@@ -1462,7 +1464,10 @@ public class Utility {
 		{
 			try
 			{
-				read.close();
+				if(read!=null)
+				{
+					read.close();
+				}
 			}
 			catch(IOException exception2)
 			{
@@ -1481,7 +1486,7 @@ public class Utility {
 	public static JSONArray readJsonArrayFile(String path)
 	{
 		File file=null;
-		FileReader read=null;
+		FileReader read = null;
 		JSONParser parser=null;
 		JSONArray jsonArray=null;
 		try
@@ -1508,7 +1513,10 @@ public class Utility {
 		{
 			try
 			{
-				read.close();
+				if(read!=null)
+				{
+					read.close();
+				}
 			}
 			catch(IOException exception2)
 			{
@@ -1517,11 +1525,6 @@ public class Utility {
 		}
 		return jsonArray;
 	}
-	
-	
-	
-	
-	
 	/**
 	 * purpose:Writes json array to the specified file
 	 * @param file file to which json object is to be written
@@ -1545,7 +1548,10 @@ public class Utility {
 		{
 			try
 			{
-				write.close();
+				if(write!=null)
+				{
+					write.close();
+				}
 			}
 			catch(IOException exception2)
 			{
@@ -1577,8 +1583,13 @@ public class Utility {
 		{
 			try
 			{
-				write.close();
+				if(write!=null)
+				{
+					write.close();
+			
+				}
 			}
+				
 			catch(IOException exception2)
 			{
 				exception2.printStackTrace();
@@ -1793,7 +1804,7 @@ public class Utility {
 				{
 					for(int j=0;j<primePalindrome.length;j++)
 					{
-						if(primeAnagramString[i]==primePalindrome[j])
+						if(primeAnagramString[i].equals(primePalindrome[j]))
 						{
 							primeAnaPalidrome[i]=primeAnagramString[i];
 						}
@@ -1807,7 +1818,7 @@ public class Utility {
 				System.out.println("PrimeAnagramPalindrome:" );
 				for(int p=0;p<primeAnaPalidrome.length;p++)
 				{
-					if(primeAnaPalidrome[p]!="")
+					if(!primeAnaPalidrome[p].equals(""))
 					{
 						System.out.print(primeAnaPalidrome[p]+" ");
 					}

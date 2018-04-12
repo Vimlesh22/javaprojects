@@ -37,7 +37,7 @@ public class TwoDPrime
 			for(int j=0;j<column;j++)
 			{
 				System.out.print(array[i][j]+"  ");
-				if(array[i][j]=="")
+				if(array[i][j].equals(""))
 				{
 					System.out.print("       ");
 				}

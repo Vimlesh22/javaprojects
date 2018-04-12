@@ -22,7 +22,7 @@ public class LeapYear {
 		else
 		{
 		boolean leap=leapyear(year);
-		if(leap==true)
+		if(leap)
 			System.out.println( "Leap Year");
 		else
 			System.out.println( "Not Leap Year");

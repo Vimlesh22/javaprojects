@@ -2,9 +2,9 @@ package com.bridgelabz.clinique;
 
 import java.util.List;
 
-public interface CliniqueInterface {
-	
-	public void readFile() ;
+public interface CliniqueInterface 
+{
+	public void readFile();
 	public void addDoctor();
 	public void writeDoctor();
 	public void displayDoctor();

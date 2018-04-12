@@ -1,39 +1,21 @@
 package com.bridgelabz.addressbook;
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import com.bridgelabz.addressbook.AddressBookManager;
 import java.util.List;
-
-
 import org.codehaus.jackson.map.ObjectMapper;
-
 import com.bridgelabz.utility.Utility;
 
 public class MainAddressBook {
 	ObjectMapper mapper;
-	public static void menu()
-	{
-		System.out.println("**********MENU*************");
-		System.out.println("1)Add Person");
-		System.out.println("2)Edit Person");
-		System.out.println("3)Delete Person ");
-		System.out.println("4)Sort By Name");
-		System.out.println("5)Sort By Zip");
-		System.out.println("6)Display List");
-		System.out.println("7)Exit");
-		System.out.println("***************************");
-	}
-
 	public static void main(String[] args) throws IOException 
 	{
 
 		int choice;
 		Utility utility=new Utility();
 		ObjectMapper mapper;
-		AddressBook addressBook=new AddressBook();
+		AddressBookInterface addressBook=new AddressBook();
 
 		String filePath="/home/bridgeit/project/AddressBookFiles";
 		File file;
@@ -41,10 +23,9 @@ public class MainAddressBook {
 		long mobileNo;
 		List<Person> personList=new ArrayList<>();
 
-		AddressBookManager addressBookManager=new AddressBookManager();
+		AddressBookManagerInterface addressBookManager=new AddressBookManager();
 
 		do{
-			
 			System.out.println("**********MENU*************");
 			System.out.println("1)Create new Address Book");
 			System.out.println("2)Open Address Book");
@@ -53,23 +34,16 @@ public class MainAddressBook {
 			System.out.println("***************************");
 			System.out.println("Enter Your choice");
 			choice=utility.nextInt();
-			
-
 			switch (choice) {
-
-
 			case 1:
-
 				System.out.println("Enter File Path to Create an AddressBook");
 				path=filePath+"/"+utility.next()+".txt";
 				file=new File(path);
 				file.createNewFile();
 				int choice3;
-
 				addressBook=addressBookManager.createNewAddressBook();
-
 				do{
-					menu();
+					addressBookManager.menu();
 					
 					choice3=utility.nextInt();
 
@@ -84,8 +58,6 @@ public class MainAddressBook {
 						addressBook.editPerson(mobileNo);
 
 						break;
-
-
 					case 3:
 						System.out.println("Enter mobile No of Person to be Deleted!!");
 						mobileNo=utility.nextLong();
@@ -124,13 +96,10 @@ public class MainAddressBook {
 
 				addressBook.setPersonList(personList);
 				System.out.println(personList);
-
 				do{
-					menu();
+					addressBookManager.menu();
 					System.out.println("Enter Your choice");
 					choice2=utility.nextInt();
-
-
 					switch (choice2) {
 
 					case 1:
@@ -167,24 +136,15 @@ public class MainAddressBook {
 
 					}
 
-
 				}while(choice2!=7);		
 
 				break;
-
-
-
-
 			case 3:
 				
 				List<Person> personListSave=addressBook.getPersonList();
 				mapper=new ObjectMapper();
 				mapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), personListSave);
 				break;
-
-
-
-
 			}
 		}while(choice!=4);	
 	}

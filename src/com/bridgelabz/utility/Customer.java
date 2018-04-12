@@ -31,8 +31,7 @@ public class Customer
 	
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", money=" + money + ", shares=" + shares + ", totalvalue=" + totalvalue
-				+ "]";
+		return "Customer [name=" + name + ", money=" + money+"]";
 	}
 
 }

@@ -11,10 +11,11 @@ import com.bridgelabz.utility.Utility;
 
 public class FlipCoin {
 	
-	static float head=0;
-	static float tail=0;
+	
 	public  static void flip()
 	{
+		float head=0;
+		float tail=0;
 		Utility utility=new Utility();
 			System.out.println("Enter how many times coin should be flipped");
 			int flip=utility.nextInt();

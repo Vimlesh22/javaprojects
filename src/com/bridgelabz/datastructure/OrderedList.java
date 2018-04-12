@@ -21,7 +21,9 @@ public class OrderedList {
 		
 		Utility utility=new Utility();
 		LinkedList<Integer> list=new LinkedList<Integer>();
-		String path="/home/bridgeit/project/File/OrderedList.txt";
+		//String path="/home/bridgeit/project/File/OrderedList.txt";
+		System.out.println("Enter File Path");
+		String path=utility.next();
 		String fileData[] = readFromFile(path);
 		
 		for(int i=0;i<fileData.length-1;i++)

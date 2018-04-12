@@ -20,7 +20,9 @@ public class UnOrderedList {
 		{
 		Utility utility=new Utility();
 		LinkedList<String> list=new LinkedList<String>();
-		String path="/home/bridgeit/project/File/UnorderedList.txt";
+		//String path="/home/bridgeit/project/File/UnorderedList.txt";
+		System.out.println("Enter File Path");
+		String path=utility.next();
 			String readString[] = readFromFile(path);
 			
 			for(int i=0;i<readString.length;i++)

@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.bridgelabz.utility.Utility;
 
-public class AddressBook {
+public class AddressBook implements AddressBookInterface {
 	
 	List<Person> personList=new ArrayList<>();
 	Utility utility=new Utility();
@@ -25,22 +25,15 @@ public class AddressBook {
 	Person person;
 	long zip;
 	
-	
-	
-	
-	public AddressBook() {
-		
-	}
-
+	@Override
 	public List<Person> getPersonList() {
 		return personList;
 	}
-
+	@Override
 	public void setPersonList(List<Person> personList) {
 		this.personList = personList;
 	}
-
-	
+	@Override
 	public List<Person> addPerson(){
 		
 		System.out.println("Enter First Name");
@@ -61,8 +54,8 @@ public class AddressBook {
 		return personList;
 		
 	}
-	
-	Person editPerson(long mobileNo){
+	@Override
+	public Person editPerson(long mobileNo){
 		
 		
 		Iterator<Person> iterator=personList.iterator();
@@ -86,7 +79,7 @@ public class AddressBook {
 		
 	
 	}
-	
+	@Override
 	public List<Person> deletePerson(long mobileNo){
 		iterator=personList.iterator();
 		while(iterator.hasNext())
@@ -102,14 +95,15 @@ public class AddressBook {
 		}
 		return personList;
 	}
-	
-	List<Person> sortByName(){
+	@Override
+	public List<Person> sortByName(){
 		Collections.sort(personList,new SortByName());
 		return personList;
 		
 	}
 	
-	List<Person> sortByZip(){
+	@Override
+	public List<Person> sortByZip(){
 		
 		Collections.sort(personList,new SortByZip());
 		return personList;

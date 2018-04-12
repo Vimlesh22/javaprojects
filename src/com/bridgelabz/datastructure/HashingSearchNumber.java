@@ -14,11 +14,13 @@ public class HashingSearchNumber {
 
 	public static void main(String[] args) {
 		
-		String path="/home/bridgeit/project/File/hashing.txt";
+//		String path="/home/bridgeit/project/File/hashing.txt";
+		Utility utility=new Utility();
+		String path=utility.next();
 		String[] number=readFromFile(path);	
 		String retrieve=Utility.hashing(number);	
 		String[] stringSplit=retrieve.split(" ");
-		int integerArray[]=new int[stringSplit.length];
+		int[] integerArray=new int[stringSplit.length];
 		for(int i=0;i<stringSplit.length;i++)
 		{
 			integerArray[i]=Integer.parseInt(stringSplit[i]);
@@ -34,7 +36,8 @@ public class HashingSearchNumber {
 		//write updated list to file
 		writeToFile(path,string); 
 		//read updated list from file
-		String[] read=readFromFile("/home/bridgeit/project/File/hashing.txt");
+		//String read=utility.next();
+		String[] read=readFromFile(path);
 		for(int i=0;i<read.length;i++)
 		{
 			System.out.print(read[i]+" ");

@@ -47,15 +47,14 @@ public class TemperatureConversion {
 				float cel=fahToCel(util.nextInt());
 				System.out.println("Temperature in Celcius is : "+cel);
 				break;
-		
 				
-			case 3 :
+		default:
+			break;
 				
-				System.exit(0);
-				break;
+			
 				
 			}
-		}while(ch!=9);
+		}while(ch!=3);
 		
 
 	}

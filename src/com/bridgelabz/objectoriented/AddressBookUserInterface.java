@@ -12,7 +12,7 @@ public class AddressBookUserInterface {
 		long zip,phoneNo;
 		boolean flag;
 		Utility utility=new Utility();
-		AddressBook addressBook=null;;
+		AddressBook addressBook=null;
 		do
 		{
 			System.out.println("**************Menu***********");

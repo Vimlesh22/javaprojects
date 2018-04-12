@@ -197,12 +197,12 @@ public class Clinique {
 		 JSONArray appointmentJson=readJsonArrayFile(appointmentFile);
 		 boolean flag=false;
 		 long noOfAppointments=0;
-		 JSONArray appointmentArrayObject=new JSONArray();
+//		 JSONArray appointmentArrayObject=new JSONArray();
 		 
 		 JSONObject doctorObject;
 		 JSONObject patientObject = new JSONObject();
 		 JSONArray patientArray=null;
-		 JSONArray appointmentArray=new JSONArray();
+		/* JSONArray appointmentArray=new JSONArray();*/
 		 System.out.println("Enter Patient Name:");
 		 String patientName=utility.next();
 		 for(int i=0;i<patientJson.size();i++)
@@ -260,7 +260,7 @@ public class Clinique {
 								{
 									 System.out.println("hello");
 	
-									 JSONObject patientObject1=new JSONObject();
+									 
 									 JSONObject nameObject1=new JSONObject();
 									 JSONObject newPatientObject=new JSONObject();
 									 JSONArray patientArray1=new JSONArray();
@@ -270,9 +270,9 @@ public class Clinique {
 									 newPatientObject.put("Specialization",specialization);
 									 newPatientObject.put("Patient", patientArray1);
 									 appointmentJson.add(newPatientObject);
-									noOfAppointments=(long)doctorObject.get("NoOfPatient") + 1;
+									 noOfAppointments=(long)doctorObject.get("NoOfPatient") + 1;
 									 doctorObject.put("NoOfPatient",noOfAppointments);
-									 	doctorJson.add(doctorObject);
+									 doctorJson.add(doctorObject);
 									 	
 									 	for(int m=0;m<doctorJson.size();m++)
 									 	{

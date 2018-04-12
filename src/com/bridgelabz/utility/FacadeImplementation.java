@@ -48,7 +48,10 @@ class Facade
 		{
 			try
 			{
-				file.close();
+				if(file!=null)
+				{
+					file.close();
+				}
 			}
 			catch(IOException e)
 			{

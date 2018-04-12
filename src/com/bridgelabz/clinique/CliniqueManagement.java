@@ -9,6 +9,11 @@ import org.codehaus.jackson.map.JsonMappingException;
 
 import com.bridgelabz.utility.Utility;
 
+/**
+ * 
+ * @author bridgeit
+ *
+ */
 public class CliniqueManagement {
 	
 	
@@ -18,7 +23,7 @@ public class CliniqueManagement {
 		Doctor doctor;
 		Patient patient;
 		List<Doctor> doctorList;
-		Clinique clinique=new Clinique();
+		CliniqueInterface clinique=new Clinique();
 		clinique.readFile();
 		
 		do{
@@ -68,7 +73,12 @@ public class CliniqueManagement {
 				System.out.println("Enter id of Doctor");
 				int id=utility.nextInt();
 				doctor=clinique.searchDoctorById(id);
-				System.out.println(doctor);
+				if(doctor != null)
+				{
+					System.out.println(doctor);
+					break;
+				}
+				System.out.println("Doctor not Foud");
 				break;
 				
 			case 8:
@@ -129,7 +139,7 @@ public class CliniqueManagement {
 				System.out.println("Enter Patient Name:");
 				String patientName1=utility.next();
 				clinique.takeAppointment(doctorName,patientName1);
-				System.out.println("Appointment Confirmed");
+				
 				break;
 				
 			case 15:clinique.popularDoctor();
