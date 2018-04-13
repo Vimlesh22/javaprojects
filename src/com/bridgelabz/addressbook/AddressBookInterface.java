@@ -1,7 +1,6 @@
 package com.bridgelabz.addressbook;
 
 import java.util.List;
-
 public interface AddressBookInterface {
 	public List<Person> getPersonList();
 	public void setPersonList(List<Person> personList);
@@ -10,5 +9,4 @@ public interface AddressBookInterface {
 	public List<Person> deletePerson(long mobileNo);
 	public List<Person> sortByName();
 	public List<Person> sortByZip();
-
 }

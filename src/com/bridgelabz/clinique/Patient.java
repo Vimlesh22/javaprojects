@@ -6,10 +6,6 @@ public class Patient {
 	private String patientName;
 	private long phoneNumber;
 	private int age;
-	
-	
-	
-	
 	public Patient(int id,String patientName, long phoneNumber, int age) {
 		super();
 		this.id = id;
@@ -19,10 +15,7 @@ public class Patient {
 	}
 	public Patient() {
 		
-	}
-	
-	
-	
+	}	
 	public int getId() {
 		return id;
 	}
@@ -47,14 +40,9 @@ public class Patient {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
 	@Override
 	public String toString() {
 		return "Patient [id=" + id + ", patientName=" + patientName + ", phoneNumber=" + phoneNumber + ", age=" + age
 				+ "]";
 	}
-	
-	
-	
-	
 }

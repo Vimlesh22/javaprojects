@@ -1,6 +1,4 @@
 package com.bridgelabz.addressbook;
-
-
 import java.util.ArrayList;
 
 import java.util.Collections;
@@ -12,7 +10,6 @@ import java.util.List;
 import com.bridgelabz.utility.Utility;
 
 public class AddressBook implements AddressBookInterface {
-	
 	List<Person> personList=new ArrayList<>();
 	Utility utility=new Utility();
 	String firstName;
@@ -23,8 +20,7 @@ public class AddressBook implements AddressBookInterface {
 	Iterator<Person> iterator;
 	Address address;
 	Person person;
-	long zip;
-	
+	long zip;	
 	@Override
 	public List<Person> getPersonList() {
 		return personList;
@@ -52,12 +48,9 @@ public class AddressBook implements AddressBookInterface {
 		person=new Person(firstName,lastName,address,mobileNo);
 		personList.add(person);
 		return personList;
-		
 	}
 	@Override
 	public Person editPerson(long mobileNo){
-		
-		
 		Iterator<Person> iterator=personList.iterator();
 		while(iterator.hasNext())
 		{
@@ -76,8 +69,6 @@ public class AddressBook implements AddressBookInterface {
 			}
 		}
 		return person;
-		
-	
 	}
 	@Override
 	public List<Person> deletePerson(long mobileNo){
@@ -89,9 +80,7 @@ public class AddressBook implements AddressBookInterface {
 			{
 				personList.remove(person);
 				break;
-				
 			}
-			
 		}
 		return personList;
 	}
@@ -99,15 +88,10 @@ public class AddressBook implements AddressBookInterface {
 	public List<Person> sortByName(){
 		Collections.sort(personList,new SortByName());
 		return personList;
-		
 	}
-	
 	@Override
 	public List<Person> sortByZip(){
-		
 		Collections.sort(personList,new SortByZip());
 		return personList;
-		
 	}
-
 }

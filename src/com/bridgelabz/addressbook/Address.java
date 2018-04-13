@@ -1,31 +1,18 @@
 package com.bridgelabz.addressbook;
 
 public class Address {
-
 	private String city;
 	private String state;
 	private long zip;
-	
-	
 	public Address() {
 		
 	}
-
-
 	public Address(String city, String state, long zip) {
 		super();
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "Address [city=" + city + ", state=" + state + ", zip=" + zip + "]";
-	}
-
-
+	}	
 	public String getCity() {
 		return city;
 	}
@@ -43,8 +30,9 @@ public class Address {
 	}
 	public void setZip(long zip) {
 		this.zip = zip;
+	}	
+	@Override
+	public String toString() {
+		return "Address [city=" + city + ", state=" + state + ", zip=" + zip + "]";
 	}
-	
-	
-	
 }

@@ -1,50 +1,33 @@
+/**
+ * Purpose:Programme is used to manage a list of Doctors associated with the Clinique.
+ * This also manages the list of patients who use the Clinique. 
+ * It manages Doctors by Name, Id, Specialization and Availability (AM,  PM or both). 
+ * It manages Patients by Name, ID, Mobile Number and Age.
+ * @author Vimlesh Kumar
+ * @version 1.0v
+ * @since 13 April 2018
+ */
 package com.bridgelabz.clinique;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
-
 import com.bridgelabz.utility.Utility;
 
-/**
- * 
- * @author bridgeit
- *
- */
-public class CliniqueManagement {
-	
-	
+public class CliniqueManagement 
+{	
 	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
 		int choice;
 		Utility utility=new Utility();
 		Doctor doctor;
 		Patient patient;
 		List<Doctor> doctorList;
-		CliniqueInterface clinique=new Clinique();
+		CliniqueInterface clinique=new CliniqueImplementation();
 		clinique.readFile();
-		
 		do{
-			System.out.println("*****************Menu*********************");
-			System.out.println("1)Add Doctor");
-			System.out.println("2)Write Doctor list in file");
-			System.out.println("3)Display Doctor list");
-			System.out.println("4)Add Patient");
-			System.out.println("5)Save Patient in file");
-			System.out.println("6)Display Patient");
-			System.out.println("7)Search Doctor By Id");
-			System.out.println("8)Search Doctor By Name");
-			System.out.println("9)Search Doctor By Specialization");
-			System.out.println("10)Serach Doctor By Availability");
-			System.out.println("11)Search Patient By Name");
-			System.out.println("12)Search Patient By Id");
-			System.out.println("13)Search Patient By Phone Number");
-			System.out.println("14)Take Appointment ");
-			System.out.println("15)Find Popular Doctor");
-			System.out.println("16)Exit Program");
-			System.out.println("********************************************");
+			clinique.menu();
 			System.out.println("Enter Your Choice:");
 			choice=utility.nextInt();
 			switch (choice) {
@@ -53,7 +36,7 @@ public class CliniqueManagement {
 				break;
 				
 			case 2:
-				clinique.writeDoctor();
+				clinique.saveDoctor();
 				break;
 			case 3:
 				clinique.displayDoctor();
@@ -63,7 +46,7 @@ public class CliniqueManagement {
 				break;
 				
 			case 5:
-				clinique.writePatient();
+				clinique.savePatient();
 				break;
 			case 6:
 				clinique.displayPatient();
@@ -109,8 +92,7 @@ public class CliniqueManagement {
 					System.out.println(iterator1.next());
 				}
 				break;
-				
-				
+					
 			case 11:
 				System.out.println("Search Patient By Name");
 				String patientName=utility.next();
@@ -123,8 +105,7 @@ public class CliniqueManagement {
 				int patientId=utility.nextInt();
 				patient=clinique.searchPatientById(patientId);
 				System.out.println(patient);
-				break;
-				
+				break;			
 				
 			case 13:
 				System.out.println("Search Patient By PhoneNo");
@@ -144,24 +125,15 @@ public class CliniqueManagement {
 				
 			case 15:clinique.popularDoctor();
 				break;
-				
-				
+						
 			case 16:
 				System.out.println("Program Terminated!!!!!!!!!!!Thank You!!!");
 				System.exit(0);
 				break;
-				
-				
-				
-				
+						
 			default:
 				break;
 			}
-			
-			
-		}while(choice!=17);
-		
+		}while(choice!=17);	
 	}
-	
-
 }

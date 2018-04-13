@@ -6,19 +6,12 @@ public class Doctor {
 	private String specialization;
 	private String availability;
 	private int noOfPatients;
-	
-	
-	
-	
-	
 	public Doctor() {
 		noOfPatients=0;
 		
 	}
-	
-	public Doctor(String doctorName, String specialization, String availability, int noOfPatients) {
-		
-		
+	public Doctor(String doctorName, String specialization, String availability, int noOfPatients) 
+	{	
 		this.doctorName = doctorName;
 		this.specialization = specialization;
 		this.availability = availability;
@@ -60,9 +53,4 @@ public class Doctor {
 		return "Doctor [id=" + id + ", doctorName=" + doctorName + ", specialization=" + specialization
 				+ ", availability=" + availability + ", noOfPatients=" + noOfPatients + "]";
 	}
-	
-	
-	
-	
-
 }

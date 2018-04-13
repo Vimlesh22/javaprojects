@@ -5,13 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
-
 import com.bridgelabz.utility.Utility;
-
 public class AddressBookManager implements AddressBookManagerInterface {
 	List<AddressBook> listAddressBook;
 	List<Person> list;
@@ -19,7 +14,6 @@ public class AddressBookManager implements AddressBookManagerInterface {
 	String filePath;
 	ObjectMapper objectMapper=new ObjectMapper();
 	Utility utility=new Utility();
-	
 	@Override
 	public List<Person> openAddressBook(String path) 
 	{
@@ -47,8 +41,6 @@ public class AddressBookManager implements AddressBookManagerInterface {
 	@Override
 	public AddressBook createNewAddressBook()
 	{
-		
-		
 		addressBook=new AddressBook();
 		return addressBook;
 		
